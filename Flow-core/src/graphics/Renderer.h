@@ -50,18 +50,18 @@ namespace fl { namespace graphics {
 
 		void PushRenderObject(const RenderObject* object);
 
-		void DrawString(const char* text, const vec3& position, const Font& font, const unsigned int& color = 0xffffffff);
+		void DrawString(const char* text, const vec3& position, const Font& font, const uint& color = 0xffffffff);
 
-		void DrawLine(float x0, float y0, float x1, float y1, unsigned int color, float thickness = 0.1f);
-		void DrawLine(const vec2& start, const vec2& end, unsigned int color, float thickness = 0.1f);
+		void DrawLine(float x0, float y0, float x1, float y1, uint color, float thickness = 0.1f);
+		void DrawLine(const vec2& start, const vec2& end, uint color, float thickness = 0.1f);
 		
-		void DrawRectangle(float x, float y, float width, float height, unsigned int color = 0xffffffff);
-		void DrawRectangle(const vec2& position, const vec2& size, unsigned int color = 0xffffffff);
-		void DrawRectangle(const Rectangle& rectangle, unsigned int color = 0xffffffff);
+		void DrawRectangle(float x, float y, float width, float height, uint color = 0xffffffff);
+		void DrawRectangle(const vec2& position, const vec2& size, uint color = 0xffffffff);
+		void DrawRectangle(const Rectangle& rectangle, uint color = 0xffffffff);
 
-		void FillRectangle(float x, float y, float width, float height, unsigned int color = 0xffffffff);
-		void FillRectangle(const vec2& position, const vec2& size, unsigned int color = 0xffffffff);
-		void FillRectangle(const Rectangle& rectangle, unsigned int color = 0xffffffff);
+		void FillRectangle(float x, float y, float width, float height, uint color = 0xffffffff);
+		void FillRectangle(const vec2& position, const vec2& size, uint color = 0xffffffff);
+		void FillRectangle(const Rectangle& rectangle, uint color = 0xffffffff);
 	private:
 		void Init();
 	};

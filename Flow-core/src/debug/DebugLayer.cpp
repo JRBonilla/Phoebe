@@ -12,7 +12,7 @@ namespace fl{ namespace debug {
 	}
 
 	void DebugLayer::Init() {
-		m_FPSLabel = new graphics::Label("", -15.5, 8, graphics::FontManager::Get("Default"), 0xffffffff);
+		m_FPSLabel = new graphics::Label("", -15.5, 8, graphics::FontManager::Get("Default"), 0xffffff);
 		m_FramesPerSecond = 0;
 		m_CurrentTime = 0;
 		m_LastTime = Timer::GetInstance()->elapsed();

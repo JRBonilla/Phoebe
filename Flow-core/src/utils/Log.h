@@ -74,6 +74,11 @@ void log_fatal(const char *file, int line, const LogData<List> &data)
 	std::cout << "\n";
 }
 
+template <typename T>
+bool IsInBounds(const T& value, const T& low, const T& high) {
+	return !(value < low) && !(high < value);
+}
+
 #ifndef FLOW_LOG_LEVEL
 #define FLOW_LOG_LEVEL FLOW_LOG_LEVEL_INFO
 #endif
@@ -81,6 +86,7 @@ void log_fatal(const char *file, int line, const LogData<List> &data)
 #if FLOW_LOG_LEVEL >= FLOW_LOG_LEVEL_INFO
 #define LOG(x) \
 	log_file_line(__FILENAME__,__LINE__,LogData<None>() << x)
+#define LEN(x) sizeof(x) / sizeof(x[0])
 #else
 #define LOG(x)
 #endif

@@ -8,7 +8,7 @@ int main(int argc, char* args[])
 	using namespace graphics;
 	using namespace debug;
 
-	Window window("Flow Engine", 1152, 648, false, true );
+	Window window("Flow Engine", 960, 540, false, true );
 	Shader shader("res/shaders/default/default.vert", "res/shaders/default/default.frag");
 
 	Layer* test2D = new Layer(new Renderer, &shader, mat4::orthographic(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f));
@@ -31,13 +31,11 @@ int main(int argc, char* args[])
 
 	DebugLayer debugLayer(window.GetGLFWWindow());
 	debugLayer.Init();
-
-	// SoundManager::Add(new Sound("test", "res/test.wav"));
 	
 	int textureIDs[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, };
 
 	shader.Enable();
-	shader.SetUniform1iv("textures", sizeof(textureIDs)/sizeof(int), textureIDs);
+	shader.SetUniform1iv("textures", LEN(textureIDs), textureIDs);
 
 	double currentFrame = Timer::GetInstance()->elapsed();
 	double lastFrame = currentFrame;
@@ -53,26 +51,11 @@ int main(int argc, char* args[])
 
 		// Set light position
 		shader.Enable();
-		shader.SetUniform2f("light_pos", vec2(InputManager::GetInstance().GetMouseX() * 32.0f / 
-		window.GetWidth() - 16.0f, 9.0f - InputManager::GetInstance().GetMouseY() * 18.0f / window.GetHeight()));
+		shader.SetUniform2f("light_pos", vec2(InputManager::GetInstance().GetMouseX() * 32.0f / window.GetWidth() - 16.0f, 9.0f - InputManager::GetInstance().GetMouseY() * 18.0f / window.GetHeight()));
 
 		currentFrame = Timer::GetInstance()->elapsed();
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
-
-		/*// Sound
-		if (InputManager::GetInstance().IsKeyTyped(GLFW_KEY_P)) {
-			SoundManager::Get("test")->Play();
-		}
-		else if (InputManager::GetInstance().IsKeyTyped(GLFW_KEY_S)) {
-			SoundManager::Get("test")->Stop();
-		}
-		else if (InputManager::GetInstance().IsKeyTyped(GLFW_KEY_F)) {
-			SoundManager::Get("test")->Pause();
-		}
-		else if (InputManager::GetInstance().IsKeyTyped(GLFW_KEY_G)) {
-			SoundManager::Get("test")->Resume();
-		}*/
 
 		// Camera
 		if (InputManager::GetInstance().IsKeyPressed(GLFW_KEY_LEFT)) {

@@ -103,8 +103,7 @@ namespace fl { namespace graphics {
 
 
 	// Pushes a render object to the renderer's buffer
-	void Renderer::PushRenderObject(const RenderObject* object)
-	{
+	void Renderer::PushRenderObject(const RenderObject* object) {
 		// Render object's vertex data
 		const vec2& size			= object->GetSize();
 		const std::vector<vec2>& uv = object->GetUVs();
@@ -144,8 +143,8 @@ namespace fl { namespace graphics {
 		m_IndexCount += 6;
 	}
 
-	void Renderer::DrawString(const char* text, const vec3& position, const Font& font, const unsigned int& color)
-	{
+	void Renderer::DrawString(const char* text, const vec3& position, const Font& font, const uint& color) {
+		ASSERT(IsInBounds(color, (uint) 0x000000, (uint) 0xffffff), "String color" << color << " is not within bounds!");
 		float x = position.x;
 		float y = position.y;
 		
@@ -199,7 +198,7 @@ namespace fl { namespace graphics {
 		}
 	}
 
-	void Renderer::DrawLine(float x0, float y0, float x1, float y1, unsigned int color, float thickness) {
+	void Renderer::DrawLine(float x0, float y0, float x1, float y1, uint color, float thickness) {
 		const std::vector<vec2>& uv = RenderObject::GetDefaultUVs();
 		float textureSlot = 0.0f;
 
@@ -232,27 +231,26 @@ namespace fl { namespace graphics {
 		m_IndexCount += 6;
 	}
 
-	void Renderer::DrawLine(const vec2& start, const vec2& end, unsigned int color, float thickness) {
+	void Renderer::DrawLine(const vec2& start, const vec2& end, uint color, float thickness) {
 		DrawLine(start.x, start.y, end.x, end.y, color, thickness);
 	}
 	
-	void Renderer::DrawRectangle(float x, float y, float width, float height, unsigned int color) {
+	void Renderer::DrawRectangle(float x, float y, float width, float height, uint color) {
 		DrawLine(x, y, x + width, y, color);
 		DrawLine(x + width, y, x + width, y + height, color);
 		DrawLine(x + width, y + height, x, y + height, color);
 		DrawLine(x, y + height, x, y, color);
 	}
 
-	void Renderer::DrawRectangle(const vec2& position, const vec2& size, unsigned int color) {
+	void Renderer::DrawRectangle(const vec2& position, const vec2& size, uint color) {
 		DrawRectangle(position.x, position.y, size.x, size.y, color);
 	}
 
-	void Renderer::DrawRectangle(const Rectangle& rectangle, unsigned int color) {
+	void Renderer::DrawRectangle(const Rectangle& rectangle, uint color) {
 		DrawRectangle(rectangle.minimum(), rectangle.size, color);
 	}
 
-	void Renderer::FillRectangle(float x, float y, float width, float height, unsigned int color)
-	{
+	void Renderer::FillRectangle(float x, float y, float width, float height, uint color) {
 		vec3 position(x, y, 0.0f);
 		vec2 size(width, height);
 		const std::vector<vec2>& uv = RenderObject::GetDefaultUVs();
@@ -285,11 +283,11 @@ namespace fl { namespace graphics {
 		m_IndexCount += 6;
 	}
 
-	void Renderer::FillRectangle(const vec2& position, const vec2& size, unsigned int color) {
+	void Renderer::FillRectangle(const vec2& position, const vec2& size, uint color) {
 		FillRectangle(position.x, position.y, size.x, size.y, color);
 	}
 
-	void Renderer::FillRectangle(const Rectangle& rectangle, unsigned int color) {
+	void Renderer::FillRectangle(const Rectangle& rectangle, uint color) {
 		FillRectangle(rectangle.minimum(), rectangle.size, color);
 	}
 		
