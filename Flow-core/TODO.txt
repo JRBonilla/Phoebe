@@ -4,6 +4,3 @@
 
 1. Sprite sheets
 2. Finish Application API
-3. Scene API
-4. Entity API
-7. Lowercase camelCase all functions

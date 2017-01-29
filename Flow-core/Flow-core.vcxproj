@@ -181,8 +181,6 @@
     <ClInclude Include="src\audio\SoundManager.h" />
     <ClInclude Include="Flow.h" />
     <ClInclude Include="src\debug\DebugLayer.h" />
-    <ClInclude Include="src\entity\component\Component.h" />
-    <ClInclude Include="src\entity\Entity.h" />
     <ClInclude Include="src\graphics\buffers\BufferLayout.h" />
     <ClInclude Include="src\graphics\Buffers\IndexBuffer.h" />
     <ClInclude Include="src\graphics\buffers\VertexArray.h" />
@@ -192,7 +190,6 @@
     <ClInclude Include="src\graphics\fonts\Font.h" />
     <ClInclude Include="src\graphics\fonts\FontManager.h" />
     <ClInclude Include="src\graphics\fonts\FontStructures.h" />
-    <ClInclude Include="src\graphics\scenes\Scene.h" />
     <ClInclude Include="src\math\Rectangle.h" />
     <ClInclude Include="src\graphics\objects\Label.h" />
     <ClInclude Include="src\input\InputManager.h" />

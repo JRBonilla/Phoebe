@@ -1,9 +1,8 @@
-﻿  Demo.cpp
-glad.lib(glad.obj) : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:ICF' specification
+﻿glad.lib(glad.obj) : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:ICF' specification
   Generating code
-  2 of 2204 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+  0 of 2204 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    4 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Flow-core.vcxproj -> C:\Users\TheRe\Documents\Visual Studio 2015\Projects\Flow\bin\Release\Flow-core.exe
   Flow-core.vcxproj -> C:\Users\TheRe\Documents\Visual Studio 2015\Projects\Flow\bin\Release\Flow-core.pdb (Full PDB)
