@@ -7,8 +7,7 @@
 
 namespace fl { namespace graphics {
 
-	class Layer
-	{
+	class Layer {
 	protected:
 		bool m_Visible;
 		Renderer* m_Renderer;

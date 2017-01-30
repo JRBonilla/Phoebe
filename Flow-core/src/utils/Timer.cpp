@@ -4,25 +4,20 @@ namespace fl {
 
 	Timer* Timer::s_Instance = new Timer();
 
-	Timer* Timer::GetInstance()
-	{
+	Timer* Timer::GetInstance() {
 		return s_Instance;
 	}
 
-	Timer::Timer()
-	{
-		reset();
+	Timer::Timer() {
+		Reset();
 	}
 
-
-	void Timer::reset()
-	{
-		m_Start = HighResClock::now();
+	void Timer::Reset() {
+		m_Start = HighResolutionClock::now();
 	}
 
-	float Timer::elapsed() const
-	{
-		return std::chrono::duration_cast<milliseconds>(HighResClock::now() - m_Start).count() / 1000.0f;
+	float Timer::Elapsed() const {
+		return std::chrono::duration_cast<milliseconds>(HighResolutionClock::now() - m_Start).count() / 1000.0f;
 	}
 
 }

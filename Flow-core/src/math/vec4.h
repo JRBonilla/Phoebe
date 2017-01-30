@@ -4,8 +4,7 @@
 
 namespace fl { namespace math {
 
-	struct vec4
-	{
+	struct vec4 {
 		float x, y, z, w;
 
 		vec4();

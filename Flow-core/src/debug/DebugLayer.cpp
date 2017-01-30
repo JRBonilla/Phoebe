@@ -15,7 +15,7 @@ namespace fl{ namespace debug {
 		m_FPSLabel = new graphics::Label("", -15.5, 8, graphics::FontManager::Get("Default"), 0xffffff);
 		m_FramesPerSecond = 0;
 		m_CurrentTime = 0;
-		m_LastTime = Timer::GetInstance()->elapsed();
+		m_LastTime = Timer::GetInstance()->Elapsed();
 		Add(m_FPSLabel);
 	}
 
@@ -27,7 +27,7 @@ namespace fl{ namespace debug {
 	}
 
 	void DebugLayer::Update() {
-		m_CurrentTime = Timer::GetInstance()->elapsed();
+		m_CurrentTime = Timer::GetInstance()->Elapsed();
 		m_FramesPerSecond++;
 		if (m_CurrentTime - m_LastTime >= 1.0f) {
 			m_FPSLabel->SetText(std::to_string(m_FramesPerSecond) + " FPS");

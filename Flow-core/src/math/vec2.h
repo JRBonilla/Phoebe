@@ -3,8 +3,7 @@
 
 namespace fl{ namespace math {
 
-	struct vec2
-	{
+	struct vec2 {
 		float x, y;
 
 		vec2();

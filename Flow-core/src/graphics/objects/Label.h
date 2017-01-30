@@ -5,8 +5,7 @@
 
 namespace fl { namespace graphics {
 
-	class Label : public RenderObject
-	{
+	class Label : public RenderObject {
 	private:
 		std::string m_Text;
 		Font* m_Font;

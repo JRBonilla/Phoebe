@@ -5,15 +5,14 @@
 
 namespace fl { namespace graphics {
 
-	class Group : public RenderObject
-	{
+	class Group : public RenderObject {
 	private:
 		std::vector<RenderObject*> m_Children; // The groups children
 		math::mat4 m_TransformationMatrix;
 	public:
 		Group(const math::mat4& transform);
 		~Group();
-		void add(RenderObject* renderable);
+		void Add(RenderObject* renderable);
 		void Render(Renderer* renderer) const override;
 	};
 	

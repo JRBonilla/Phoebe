@@ -6,21 +6,19 @@
 
 namespace fl { namespace graphics {
 
-	struct VertexData
-	{
+	struct VertexData {
 		vec3 vertex;
 		vec2 uv;
 		float tid;
 		unsigned int color;
 	};
 
-	class RenderObject
-	{
+	class RenderObject {
 	protected:
 		vec3 m_Position;
 		vec2 m_Size;
-		unsigned int m_Color;
 		std::vector<vec2> m_UV;
+		unsigned int m_Color;
 		Texture* m_Texture;
 	protected:
 		RenderObject();

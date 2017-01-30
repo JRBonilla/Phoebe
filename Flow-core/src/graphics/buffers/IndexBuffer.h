@@ -5,8 +5,7 @@
 namespace fl{ namespace graphics {
 
 	// Stores the indices which index the vertices
-	class IndexBuffer
-	{
+	class IndexBuffer {
 	private:
 		GLuint m_BufferID; // The unique buffer id given by OpenGL
 		GLuint m_Count;    // Number of indices

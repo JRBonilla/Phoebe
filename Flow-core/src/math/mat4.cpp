@@ -2,13 +2,11 @@
 
 namespace fl { namespace math {
 
-	mat4::mat4()
-	{
+	mat4::mat4() {
 		memset(elements, 0, 4 * 4 * sizeof(float));
 	}
 
-	mat4::mat4(float diagonal)
-	{
+	mat4::mat4(float diagonal) {
 		memset(elements, 0, 4 * 4 * sizeof(float));
 
 		elements[0 + 0 * 4] = diagonal;
@@ -17,13 +15,11 @@ namespace fl { namespace math {
 		elements[3 + 3 * 4] = diagonal;
 	}
 
-	mat4::mat4(float* elements)
-	{
+	mat4::mat4(float* elements) {
 		memcpy(this->elements, elements, 4 * 4 * sizeof(float));
 	}
 
-	mat4::mat4(const vec4& col0, const vec4& col1, const vec4& col2, const vec4& col3)
-	{
+	mat4::mat4(const vec4& col0, const vec4& col1, const vec4& col2, const vec4& col3) {
 		column[0] = col0;
 		column[1] = col1;
 		column[2] = col2;
@@ -31,21 +27,16 @@ namespace fl { namespace math {
 	}
 
 
-	mat4 mat4::identity()
-	{
+	mat4 mat4::identity() {
 		return mat4(1.0f);
 	}
 
-	mat4& mat4::multiply(const mat4& other)
-	{
+	mat4& mat4::multiply(const mat4& other) {
 		float data[16];
-		for (int y = 0; y < 4; y++)
-		{
-			for (int x = 0; x < 4; x++)
-			{
+		for (int y = 0; y < 4; y++) {
+			for (int x = 0; x < 4; x++) {
 				float sum = 0.0f;
-				for (int e = 0; e < 4; e++)
-				{
+				for (int e = 0; e < 4; e++) {
 					sum += elements[x + e * 4] * other.elements[e + y * 4];
 				}
 				data[x + y * 4] = sum;
@@ -56,35 +47,28 @@ namespace fl { namespace math {
 		return *this;
 	}
 
-	mat4 operator*(mat4 left, const mat4& right)
-	{
+	mat4 operator*(mat4 left, const mat4& right) {
 		return left.multiply(right);
 	}
 
-	mat4& mat4::operator*=(const mat4& other)
-	{
+	mat4& mat4::operator*=(const mat4& other) {
 		return multiply(other);
 	}
 
-	vec3 mat4::multiply(const vec3& other) const
-	{
-		return vec3
-		(
+	vec3 mat4::multiply(const vec3& other) const {
+		return vec3 (
 			(column[0].x * other.x) + (column[1].x * other.y) + (column[2].x * other.z) + (column[3].x * 1),
 			(column[0].y * other.x) + (column[1].y * other.y) + (column[2].y * other.z) + (column[3].y * 1),
 			(column[0].z * other.x) + (column[1].z * other.y) + (column[2].z * other.z) + (column[3].z * 1)
 		);
 	}
 
-	vec3 operator*(const mat4& left, const vec3& right)
-	{
+	vec3 operator*(const mat4& left, const vec3& right) {
 		return left.multiply(right);
 	}
 
-	vec4 mat4::multiply(const vec4& other) const
-	{
-		return vec4
-		(
+	vec4 mat4::multiply(const vec4& other) const {
+		return vec4 (
 			(column[0].x * other.x) + (column[1].x * other.y) + (column[2].x * other.z) + (column[3].x * other.w),
 			(column[0].y * other.x) + (column[1].y * other.y) + (column[2].y * other.z) + (column[3].y * other.w),
 			(column[0].z * other.x) + (column[1].z * other.y) + (column[2].z * other.z) + (column[3].z * other.w),
@@ -92,14 +76,12 @@ namespace fl { namespace math {
 		);
 	}
 
-	vec4 operator*(const mat4& left, const vec4& right)
-	{
+	vec4 operator*(const mat4& left, const vec4& right) {
 		return left.multiply(right);
 	}
 
 
-	mat4 mat4::orthographic(float left, float right, float bottom, float top, float near, float far)
-	{
+	mat4 mat4::orthographic(float left, float right, float bottom, float top, float near, float far) {
 		mat4 result(1.0f);
 
 		result.elements[0 + 0 * 4] = 2.0f / (right - left);
@@ -113,8 +95,7 @@ namespace fl { namespace math {
 		return result;
 	}
 
-	mat4 mat4::perspective(float fov, float aspectRatio, float near, float far)
-	{
+	mat4 mat4::perspective(float fov, float aspectRatio, float near, float far) {
 		mat4 result;
 
 		float q = 1.0f / tan(toRadians(0.5f * fov));
@@ -132,8 +113,7 @@ namespace fl { namespace math {
 		return result;
 	}
 
-	mat4 mat4::lookAt(const vec3& camera, const vec3& object, const vec3& up)
-	{
+	mat4 mat4::lookAt(const vec3& camera, const vec3& object, const vec3& up) {
 		mat4 result = identity();
 		vec3 f = (object - camera).normalize();
 		vec3 s = f.cross(up.normalize());
@@ -155,8 +135,7 @@ namespace fl { namespace math {
 	}
 
 
-	mat4 mat4::translate(const vec3& translation)
-	{
+	mat4 mat4::translate(const vec3& translation) {
 		mat4 result(1.0f);
 
 		result.elements[0 + 3 * 4] = translation.x;
@@ -166,8 +145,7 @@ namespace fl { namespace math {
 		return result;
 	}
 
-	struct mat4 mat4::scale(const vec3& scale)
-	{
+	struct mat4 mat4::scale(const vec3& scale) {
 		mat4 result(1.0f);
 
 		result.elements[0 + 0 * 4] = scale.x;
@@ -178,8 +156,7 @@ namespace fl { namespace math {
 	}
 
 
-	mat4 mat4::rotate(float angle, const vec3& axis)
-	{
+	mat4 mat4::rotate(float angle, const vec3& axis) {
 		mat4 result(1.0f);
 
 		float r = toRadians(angle);

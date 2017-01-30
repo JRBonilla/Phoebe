@@ -4,10 +4,8 @@
 
 namespace fl { namespace math {
 
-	struct mat4
-	{
-		union
-		{
+	struct mat4 {
+		union {
 			float elements[4 * 4];
 			vec4 column[4];
 		};
@@ -16,8 +14,6 @@ namespace fl { namespace math {
 		mat4(float diagonal);
 		mat4(float* elements);
 		mat4(const vec4& col0, const vec4& col1, const vec4& col2, const vec4& col3);
-
-		static mat4 identity();
 
 		mat4& multiply(const mat4& other);
 		friend mat4 operator*(mat4 left, const mat4& right);
@@ -28,6 +24,8 @@ namespace fl { namespace math {
 
 		vec4 multiply(const vec4& other) const;
 		friend vec4 operator*(const mat4& left, const vec4& right);
+
+		static mat4 identity();
 
 		static mat4 orthographic(float left, float right, float bottom, float top, float near, float far);
 		static mat4 perspective(float fov, float aspectRatio, float near, float far);

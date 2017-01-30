@@ -6,13 +6,11 @@
 
 namespace fl { namespace graphics {
 
-	enum class BufferUsage
-	{
+	enum class BufferUsage {
 		STATIC, DYNAMIC
 	};
 
-	class VertexBuffer
-	{
+	class VertexBuffer {
 	private:
 		GLuint m_BufferID;
 		GLuint m_Size;

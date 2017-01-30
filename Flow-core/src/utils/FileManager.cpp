@@ -3,8 +3,7 @@
 namespace fl {
 	
 	// Returns the contents of a file
-	std::string FileManager::ReadFile(const char* filename)
-	{
+	std::string FileManager::ReadFile(const char* filename) {
 		// Open the file
 		FILE* file;
 		file = fopen(filename, "rt");
@@ -13,8 +12,7 @@ namespace fl {
 		ASSERT(file, "Could not open file " << filename << "!\n");
 
 		// If it does, read it
-		if (file != nullptr)
-		{
+		if (file != nullptr) {
 			fseek(file, 0, SEEK_END);
 			unsigned long length = ftell(file);
 			char* data = new char[length + 1];
@@ -32,8 +30,7 @@ namespace fl {
 		return std::string();
 	}
 
-	std::string FileManager::GetFileExtension(const std::string& filename)
-	{
+	std::string FileManager::GetFileExtension(const std::string& filename) {
 		return filename.substr(filename.find(".") + 1);
 	}
 

@@ -5,8 +5,7 @@
 
 namespace fl { namespace graphics {
 
-	struct BufferElement
-	{
+	struct BufferElement {
 		GLuint index;
 		GLint size;
 		GLenum type;
@@ -15,8 +14,7 @@ namespace fl { namespace graphics {
 		const void* offset;
 	};
 
-	class BufferLayout
-	{
+	class BufferLayout {
 	private:
 		std::vector<BufferElement> m_Layout;
 	public:

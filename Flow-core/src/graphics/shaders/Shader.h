@@ -17,8 +17,7 @@ namespace fl { namespace graphics {
 #define SHADER_COLOR_INDEX	3
 
 	// Compiles and manages a shader
-	class Shader
-	{
+	class Shader {
 	private:
 		GLuint m_ShaderID;
 		const char* m_VertexPath;

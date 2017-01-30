@@ -2,14 +2,14 @@
 
 namespace fl { namespace graphics {
 
-	Texture::Texture(const std::string& path, bool UnpackAsByte, TextureParameters parameters, TextureLoadOptions loadOptions)
+	Texture::Texture(const std::string& path, bool setAlignmentToByte, TextureParameters parameters, TextureLoadOptions loadOptions)
 		: m_FilePath(path), m_Parameters(parameters), m_LoadOptions(loadOptions) {
-		m_TextureID = load(UnpackAsByte);
+		m_TextureID = Load(setAlignmentToByte);
 	}
 
-	Texture::Texture(uint width, uint height, bool UnpackAsByte, TextureParameters parameters, TextureLoadOptions loadOptions)
+	Texture::Texture(uint width, uint height, bool setAlignmentToByte, TextureParameters parameters, TextureLoadOptions loadOptions)
 		: m_FilePath("NULL"), m_Width(width), m_Height(height), m_Parameters(parameters), m_LoadOptions(loadOptions) {
-		m_TextureID = load(UnpackAsByte);
+		m_TextureID = Load(setAlignmentToByte);
 	}
 
 
@@ -17,20 +17,20 @@ namespace fl { namespace graphics {
 		glDeleteTextures(1, &m_TextureID);
 	}
 
-	GLuint Texture::load(bool UnpackAsByte) {
+	GLuint Texture::Load(bool setAlignmentToByte) {
 		unsigned char* pixels = nullptr;
 
 		if (m_FilePath != "NULL") {
 			int bits = 0;
 			pixels = Image::Load(m_FilePath.c_str(), &m_Width, &m_Height, &bits, !m_LoadOptions.FlipVertical);
-			m_Parameters.format = bits == 24 ? TextureFormat::RGB : TextureFormat::RGBA;
+			m_Parameters.format = (bits == 24 ? TextureFormat::RGB : TextureFormat::RGBA);
 		}
 
 		GLuint result;
 		glGenTextures(1, &result);
 		glBindTexture(GL_TEXTURE_2D, result);
 
-		if (UnpackAsByte) {
+		if (setAlignmentToByte) {
 			glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 		}
 
@@ -44,7 +44,7 @@ namespace fl { namespace graphics {
 		glBindTexture(GL_TEXTURE_2D, 0);
 
 		if (pixels != nullptr) {
-			delete[] pixels;
+			Image::Free(pixels);
 		}
 
 		return result;

@@ -7,8 +7,7 @@
 
 namespace fl { namespace graphics {
 
-	class VertexArray
-	{
+	class VertexArray {
 	private:
 		GLuint m_ArrayID;
 		std::vector<VertexBuffer*> m_Buffers;

@@ -16,8 +16,7 @@ namespace fl{ namespace graphics {
 		s_Fonts.push_back(font);
 	}
 
-	Font* FontManager::Get()
-	{
+	Font* FontManager::Get() {
 		return s_Fonts[0];
 	}
 

@@ -6,8 +6,7 @@
 
 namespace fl { namespace graphics {
 
-	class Font
-	{
+	class Font {
 	private:
 		float m_Size;
 		math::vec2 m_Scale;

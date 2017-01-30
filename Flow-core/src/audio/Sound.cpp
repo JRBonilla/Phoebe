@@ -5,7 +5,7 @@ namespace fl{ namespace audio {
 
 	bool Sound::m_IsPlaying = false;
 
-	Sound::Sound(const std::string& name, const std::string& filename)
+	Sound::Sound(const std::string& name, const std::string& filename) 
 		: m_Name(name), m_Filename(filename) {
 		m_Sound = gau_load_sound_file(m_Filename.c_str(), FileManager::GetFileExtension(filename).c_str());
 		ASSERT(m_Sound, "Could not load sound file " << m_Filename.c_str() << "!");

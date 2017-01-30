@@ -4,8 +4,7 @@
 
 namespace fl {
 	
-	class FileManager
-	{
+	class FileManager {
 	private:
 		FileManager() { }
 	public:

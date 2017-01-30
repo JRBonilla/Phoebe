@@ -6,8 +6,7 @@ namespace fl { namespace graphics {
 
 	using namespace math;
 
-	class Camera
-	{
+	class Camera {
 	protected:
 		mat4 m_ProjectionMatrix, m_ViewMatrix;
 		vec3 m_Position, m_Rotation, m_FocalPoint;

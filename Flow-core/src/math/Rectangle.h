@@ -4,22 +4,17 @@
 
 namespace fl { namespace math {
 
-	struct Rectangle
-	{
-		union
-		{
+	struct Rectangle {
+		union {
 			vec2 position;
-			struct
-			{
+			struct {
 				float x;
 				float y;
 			};
 		};
-		union
-		{
+		union {
 			vec2 size;
-			struct
-			{
+			struct {
 				float width;
 				float height;
 			};
@@ -31,7 +26,6 @@ namespace fl { namespace math {
 
 		bool intersects(const Rectangle& other) const;
 		bool contains(const vec2& point) const;
-
 
 		inline vec2 minimum() const { return position; }
 		inline vec2 maximum() const { return position + size; }

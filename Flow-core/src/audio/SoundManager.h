@@ -14,10 +14,11 @@ namespace fl{ namespace audio {
 		static std::vector<Sound*> m_Sounds;
 	public:
 		static void Init();
-		static void Add(Sound* sound);
-		static Sound* Get(const std::string& name);
 		static void Update();
 		static void Clean();
+
+		static void Add(Sound* sound);
+		static Sound* Get(const std::string& name);
 	private:
 		SoundManager() { }
 	};

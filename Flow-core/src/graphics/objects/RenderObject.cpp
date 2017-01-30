@@ -15,8 +15,7 @@ namespace fl { namespace graphics {
 	
 	const std::vector<math::vec2>& RenderObject::GetDefaultUVs() {
 		static std::vector<math::vec2> results;
-		if (!results.size())
-		{
+		if (!results.size()) {
 			results.push_back(math::vec2(0, 0));
 			results.push_back(math::vec2(0, 1));
 			results.push_back(math::vec2(1, 1));

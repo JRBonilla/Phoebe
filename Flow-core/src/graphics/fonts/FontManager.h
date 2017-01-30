@@ -5,8 +5,7 @@
 
 namespace fl { namespace graphics {
 
-	class FontManager
-	{
+	class FontManager {
 	private:
 		static std::vector<Font*> s_Fonts;
 		static math::vec2 s_Scale;

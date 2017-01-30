@@ -3,17 +3,11 @@
 namespace fl { namespace graphics {
 
 	OrthographicCamera::OrthographicCamera(const mat4& projectionMatrix)
-		: Camera(projectionMatrix)
-	{
-	}
+		: Camera(projectionMatrix) { }
 
-	OrthographicCamera::~OrthographicCamera()
-	{
-	}
+	OrthographicCamera::~OrthographicCamera() { }
 	
-	void OrthographicCamera::Focus()
-	{
-	}
+	void OrthographicCamera::Focus() { }
 
 	void OrthographicCamera::Update()
 	{

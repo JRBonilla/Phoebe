@@ -9,8 +9,7 @@
 
 namespace fl{ namespace debug {
 
-	class DebugLayer : public graphics::Layer
-	{
+	class DebugLayer : public graphics::Layer {
 	private:
 		graphics::Label* m_FPSLabel;
 		int m_FramesPerSecond;

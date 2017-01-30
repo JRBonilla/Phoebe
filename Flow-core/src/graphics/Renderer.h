@@ -28,13 +28,13 @@ namespace fl { namespace graphics {
 	{
 	private:
 		GLsizei					m_IndexCount;
+		const mat4*				m_TransformationBack;
+		std::vector<mat4>		m_TransformationStack;
 		IndexBuffer*			m_IndexBuffer;
 		VertexData*				m_Buffer;
 		VertexArray*			m_VertexArray;
 		VertexBuffer*			m_VertexBuffer;
 		std::vector<Texture*>	m_Textures;
-		const mat4*				m_TransformationBack;
-		std::vector<mat4>		m_TransformationStack;
 	public:
 		Renderer();
 		~Renderer();

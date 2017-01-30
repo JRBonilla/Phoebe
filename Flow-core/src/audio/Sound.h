@@ -9,8 +9,7 @@
 
 namespace fl{ namespace audio {
 
-	class Sound
-	{
+	class Sound {
 	private:
 		static bool m_IsPlaying;
 		std::string m_Name;

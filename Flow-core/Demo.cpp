@@ -37,7 +37,7 @@ int main(int argc, char* args[])
 	shader.Enable();
 	shader.SetUniform1iv("textures", LEN(textureIDs), textureIDs);
 
-	double currentFrame = Timer::GetInstance()->elapsed();
+	double currentFrame = Timer::GetInstance()->Elapsed();
 	double lastFrame = currentFrame;
 	double deltaTime;
 
@@ -53,7 +53,7 @@ int main(int argc, char* args[])
 		shader.Enable();
 		shader.SetUniform2f("light_pos", vec2(InputManager::GetInstance().GetMouseX() * 32.0f / window.GetWidth() - 16.0f, 9.0f - InputManager::GetInstance().GetMouseY() * 18.0f / window.GetHeight()));
 
-		currentFrame = Timer::GetInstance()->elapsed();
+		currentFrame = Timer::GetInstance()->Elapsed();
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
 

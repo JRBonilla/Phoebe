@@ -29,54 +29,41 @@ namespace fl { namespace graphics {
 		RGBA
 	};
 
-	struct TextureParameters
-	{
+	struct TextureParameters {
 		TextureFilter filter;
 		TextureFormat format;
 		TextureWrap wrap;
 
-		TextureParameters()
-		{
+		TextureParameters() {
 			format = TextureFormat::RGBA;
 			filter = TextureFilter::NEAREST;
 			wrap = TextureWrap::CLAMP_TO_EDGE;
 		}
 
 		TextureParameters(TextureFormat format, TextureFilter filter, TextureWrap wrap)
-			: format(format), filter(filter), wrap(wrap)
-		{
-		}
+			: format(format), filter(filter), wrap(wrap) { }
 
 		TextureParameters(TextureFilter filter)
-			: format(TextureFormat::RGBA), filter(filter), wrap(TextureWrap::CLAMP_TO_EDGE)
-		{
-		}
+			: format(TextureFormat::RGBA), filter(filter), wrap(TextureWrap::CLAMP_TO_EDGE) { }
 
 		TextureParameters(TextureFilter filter, TextureWrap wrap)
-			: format(TextureFormat::RGBA), filter(filter), wrap(wrap)
-		{
-		}
+			: format(TextureFormat::RGBA), filter(filter), wrap(wrap) { }
 	};
 
-	struct TextureLoadOptions
-	{
+	struct TextureLoadOptions {
 		bool FlipHorizontal;
 		bool FlipVertical;
 
-		TextureLoadOptions()
-		{
+		TextureLoadOptions() {
 			FlipHorizontal = false;
 			FlipVertical = false;
 		}
 
 		TextureLoadOptions(bool flipHorizontal, bool flipVertical)
-			: FlipHorizontal(flipHorizontal), FlipVertical(flipVertical)
-		{
-		}
+			: FlipHorizontal(flipHorizontal), FlipVertical(flipVertical) { }
 	};
 
-	class Texture
-	{
+	class Texture {
 	private:
 		std::string m_FilePath;
 		GLuint m_TextureID;
@@ -84,8 +71,8 @@ namespace fl { namespace graphics {
 		TextureParameters m_Parameters;
 		TextureLoadOptions m_LoadOptions;
 	public:
-		Texture(const std::string& path, bool UnpackAsByte = false, TextureParameters parameters = TextureParameters(), TextureLoadOptions loadOptions = TextureLoadOptions());
-		Texture(uint width, uint height, bool UnpackAsByte = false, TextureParameters parameters = TextureParameters(), TextureLoadOptions loadOptions = TextureLoadOptions());
+		Texture(const std::string& path, bool setAlignmentToByte = false, TextureParameters parameters = TextureParameters(), TextureLoadOptions loadOptions = TextureLoadOptions());
+		Texture(uint width, uint height, bool setAlignmentToByte = false, TextureParameters parameters = TextureParameters(), TextureLoadOptions loadOptions = TextureLoadOptions());
 		~Texture();
 
 		void SetData(unsigned char* pixels, uint xoffset, uint yoffset, uint width, uint height);
@@ -93,11 +80,11 @@ namespace fl { namespace graphics {
 		void Bind(unsigned int slot) const;
 		void Unbind(unsigned int slot) const;
 
-		inline const GLuint getID() const { return m_TextureID; }
-		inline GLsizei getWidth() const { return m_Width; }
-		inline GLsizei getHeight() const { return m_Height; }
+		inline const GLuint GetID() const { return m_TextureID; }
+		inline GLsizei GetWidth() const { return m_Width; }
+		inline GLsizei GetHeight() const { return m_Height; }
 	private:
-		GLuint load(bool UnpackAsByte = false);
+		GLuint Load(bool setAlignmentToByte = false);
 		static uint const TextureFormatToGL(TextureFormat format);
 		static uint const TextureWrapToGL(TextureWrap wrap);
 	};

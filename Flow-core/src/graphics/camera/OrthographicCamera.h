@@ -4,8 +4,7 @@
 
 namespace fl { namespace graphics {
 
-	class OrthographicCamera : public Camera
-	{
+	class OrthographicCamera : public Camera {
 	public:
 		OrthographicCamera(const mat4& projectionMatrix);
 		~OrthographicCamera();
