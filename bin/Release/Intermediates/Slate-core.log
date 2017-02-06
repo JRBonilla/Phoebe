@@ -1,0 +1,9 @@
+﻿  Demo.cpp
+glad.lib(glad.obj) : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:ICF' specification
+  Generating code
+  0 of 1905 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    3 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Slate-core.vcxproj -> C:\Users\TheRe\Documents\Visual Studio 2015\Projects\Slate\bin\Release\Slate-core.exe
+  Slate-core.vcxproj -> C:\Users\TheRe\Documents\Visual Studio 2015\Projects\Slate\bin\Release\Slate-core.pdb (Full PDB)
