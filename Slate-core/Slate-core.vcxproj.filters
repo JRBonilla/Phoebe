@@ -72,9 +72,6 @@
     <ClCompile Include="src\app\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Demo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\graphics\buffers\BufferLayout.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -256,34 +253,17 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\default\default.frag" />
-    <None Include="res\shaders\default\default.vert" />
-    <None Include="res\shaders\default\text.frag" />
     <None Include="imgui.ini" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\test.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\test2.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="res\icon.ico">
       <Filter>Resource Files</Filter>
     </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="res\test.wav">
-      <Filter>Resource Files</Filter>
-    </Media>
   </ItemGroup>
   <ItemGroup>
     <Text Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="res\OldStandard-Regular.ttf" />
-    <Font Include="res\SourceSansPro-Light.ttf" />
-    <Font Include="res\Roboto-Regular.ttf" />
-    <Font Include="res\Roboto-Medium.ttf" />
   </ItemGroup>
 </Project>

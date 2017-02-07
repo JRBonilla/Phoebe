@@ -1,41 +1,41 @@
 #pragma once
 
-#include "src/Types.h"
-#include "src/app/Window.h"
+#include "Types.h"
+#include "app/Window.h"
 
-#include "src/audio/Sound.h"
-#include "src/audio/SoundManager.h"
+#include "audio/Sound.h"
+#include "audio/SoundManager.h"
 
-#include "src/debug/DebugLayer.h"
+#include "debug/DebugLayer.h"
 
-#include "src/input/InputManager.h"
+#include "input/InputManager.h"
 
-#include "src/graphics/Renderer.h"
-#include "src/graphics/Texture.h"
+#include "graphics/Renderer.h"
+#include "graphics/Texture.h"
 
-#include "src/graphics/buffers/VertexArray.h"
-#include "src/graphics/buffers/IndexBuffer.h"
-#include "src/graphics/buffers/VertexBuffer.h"
+#include "graphics/buffers/VertexArray.h"
+#include "graphics/buffers/IndexBuffer.h"
+#include "graphics/buffers/VertexBuffer.h"
 
-#include "src/graphics/camera/Camera.h"
-#include "src/graphics/camera/OrthographicCamera.h"
+#include "graphics/camera/Camera.h"
+#include "graphics/camera/OrthographicCamera.h"
 
-#include "src/graphics/fonts/Font.h"
-#include "src/graphics/fonts/FontManager.h"
-#include "src/graphics/fonts/FontStructures.h"
+#include "graphics/fonts/Font.h"
+#include "graphics/fonts/FontManager.h"
+#include "graphics/fonts/FontStructures.h"
 
-#include "src/graphics/objects/RenderObject.h"
-#include "src/graphics/objects/Label.h"
-#include "src/graphics/objects/Sprite.h"
+#include "graphics/objects/RenderObject.h"
+#include "graphics/objects/Label.h"
+#include "graphics/objects/Sprite.h"
 
-#include "src/graphics/shaders/Shader.h"
-#include "src/graphics/shaders/ShaderManager.h"
+#include "graphics/shaders/Shader.h"
+#include "graphics/shaders/ShaderManager.h"
 
-#include "src/layers/Layer.h"
-#include "src/layers/Group.h"
+#include "layers/Layer.h"
+#include "layers/Group.h"
 
-#include "src/math/Math.h"
+#include "math/Math.h"
 
-#include "src/utils/Log.h"
-#include "src/utils/Timer.h"
-#include "src/utils/FileManager.h"
+#include "utils/Log.h"
+#include "utils/Timer.h"
+#include "utils/FileManager.h"
