@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Shader.h"
-#include "../../Types.h"
 #include <vector>
+#include "Shader.h"
+#include "../../common/Types.h"
 
 namespace ph { namespace graphics {
 

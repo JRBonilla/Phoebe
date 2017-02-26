@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../graphics/objects/RenderObject.h"
+#include "../graphics/renderables/Renderable.h"
 #include "../graphics/Renderer.h"
 #include "../graphics/shaders/Shader.h"
 #include "../graphics/camera/OrthographicCamera.h"
@@ -11,7 +11,7 @@ namespace ph { namespace graphics {
 	protected:
 		bool m_Visible;
 		Renderer* m_Renderer;
-		std::vector<RenderObject*> m_Objects;
+		std::vector<Renderable*> m_Renderables;
 		Shader* m_Shader;
 		mat4 m_ProjectionMatrix;
 		OrthographicCamera* m_Camera;
@@ -23,8 +23,8 @@ namespace ph { namespace graphics {
 		virtual void Update();
 		virtual void Render();
 		
-		virtual void Add(RenderObject* object);
-		inline const std::vector<RenderObject*>& GetObjects() const { return m_Objects; }
+		virtual void Add(Renderable* renderable);
+		inline const std::vector<Renderable*>& GetRenderables() const { return m_Renderables; }
 
 		inline Shader* GetShader() const { return m_Shader; }
 		inline void SetShader(Shader* shader) { m_Shader = shader; }

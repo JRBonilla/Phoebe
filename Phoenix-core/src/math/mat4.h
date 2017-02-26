@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Math.h"
+#include "PhoenixMath.h"
 
 namespace ph { namespace math {
 
@@ -25,6 +25,8 @@ namespace ph { namespace math {
 		vec4 multiply(const vec4& other) const;
 		friend vec4 operator*(const mat4& left, const vec4& right);
 
+		mat4& invert();
+
 		static mat4 identity();
 
 		static mat4 orthographic(float left, float right, float bottom, float top, float near, float far);
@@ -34,6 +36,7 @@ namespace ph { namespace math {
 		static mat4 translate(const vec3& translation);
 		static mat4 scale(const vec3& scale);
 		static mat4 rotate(float angle, const vec3& axis);
+		static mat4 invert(const mat4& matrix);
 	};
 
 }}

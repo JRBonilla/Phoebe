@@ -2,9 +2,11 @@
 
 #include <iostream>
 #include <vector>
+#include <unordered_map>
+#include <string>
 #include <glad/glad.h>
-#include "../../utils/FileManager.h"
-#include "../../math/Math.h"
+#include "../../utilities/FileManager.h"
+#include "../../math/PhoenixMath.h"
 
 #define FAILURE 0
 #define SUCCESS 1
@@ -19,10 +21,11 @@ namespace ph { namespace graphics {
 	// Compiles and manages a shader
 	class Shader {
 	private:
-		GLuint m_ShaderID;
+		GLuint		m_ShaderID;
 		std::string m_Name;
 		const char* m_VertexPath;
 		const char* m_FragmentPath;
+		std::unordered_map<std::string, GLint> m_UniformLocations;
 	public:
 		Shader(const std::string& name, const char* vertexPath, const char* fragmentPath);
 		~Shader();
@@ -40,13 +43,12 @@ namespace ph { namespace graphics {
 		void SetUniform2f(const GLchar* name, const math::vec2& vector);
 		void SetUniform3f(const GLchar* name, const math::vec3& vector);
 		void SetUniform4f(const GLchar* name, const math::vec4& vector);
-		void SetUniformMat4(const GLchar* name, const math::mat4& matrix);
+		void SetUniformmat4(const GLchar* name, const math::mat4& matrix);
 	private:
 		GLuint Load();
 		GLuint Compile(GLuint& id, const char* path);
 		GLuint Link(GLuint& program, GLuint& vertex, GLuint& fragment);
-
-		GLint GetUniformLocation(const GLchar* name);
+		GLint  GetUniformLocation(const GLchar* name);
 	};
 	
 }}

@@ -7,14 +7,7 @@ namespace ph { namespace graphics {
 	}
 
 	VertexArray::~VertexArray() {
-		for (uint i = 0; i < m_Buffers.size(); i++) {
-			delete m_Buffers[i];
-		}
 		glDeleteVertexArrays(1, &m_ArrayID);
-	}
-
-	void VertexArray::PushBuffer(VertexBuffer* buffer) {
-		m_Buffers.push_back(buffer);
 	}
 
 	void VertexArray::Bind() const {

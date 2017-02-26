@@ -67,6 +67,130 @@ namespace ph { namespace math {
 		return left.multiply(right);
 	}
 
+	mat4& mat4::invert() {
+		float temp[16];
+
+		temp[0] = elements[5] * elements[10] * elements[15] -
+			elements[5] * elements[11] * elements[14] -
+			elements[9] * elements[6] * elements[15] +
+			elements[9] * elements[7] * elements[14] +
+			elements[13] * elements[6] * elements[11] -
+			elements[13] * elements[7] * elements[10];
+
+		temp[4] = -elements[4] * elements[10] * elements[15] +
+			elements[4] * elements[11] * elements[14] +
+			elements[8] * elements[6] * elements[15] -
+			elements[8] * elements[7] * elements[14] -
+			elements[12] * elements[6] * elements[11] +
+			elements[12] * elements[7] * elements[10];
+
+		temp[8] = elements[4] * elements[9] * elements[15] -
+			elements[4] * elements[11] * elements[13] -
+			elements[8] * elements[5] * elements[15] +
+			elements[8] * elements[7] * elements[13] +
+			elements[12] * elements[5] * elements[11] -
+			elements[12] * elements[7] * elements[9];
+
+		temp[12] = -elements[4] * elements[9] * elements[14] +
+			elements[4] * elements[10] * elements[13] +
+			elements[8] * elements[5] * elements[14] -
+			elements[8] * elements[6] * elements[13] -
+			elements[12] * elements[5] * elements[10] +
+			elements[12] * elements[6] * elements[9];
+
+		temp[1] = -elements[1] * elements[10] * elements[15] +
+			elements[1] * elements[11] * elements[14] +
+			elements[9] * elements[2] * elements[15] -
+			elements[9] * elements[3] * elements[14] -
+			elements[13] * elements[2] * elements[11] +
+			elements[13] * elements[3] * elements[10];
+
+		temp[5] = elements[0] * elements[10] * elements[15] -
+			elements[0] * elements[11] * elements[14] -
+			elements[8] * elements[2] * elements[15] +
+			elements[8] * elements[3] * elements[14] +
+			elements[12] * elements[2] * elements[11] -
+			elements[12] * elements[3] * elements[10];
+
+		temp[9] = -elements[0] * elements[9] * elements[15] +
+			elements[0] * elements[11] * elements[13] +
+			elements[8] * elements[1] * elements[15] -
+			elements[8] * elements[3] * elements[13] -
+			elements[12] * elements[1] * elements[11] +
+			elements[12] * elements[3] * elements[9];
+
+		temp[13] = elements[0] * elements[9] * elements[14] -
+			elements[0] * elements[10] * elements[13] -
+			elements[8] * elements[1] * elements[14] +
+			elements[8] * elements[2] * elements[13] +
+			elements[12] * elements[1] * elements[10] -
+			elements[12] * elements[2] * elements[9];
+
+		temp[2] = elements[1] * elements[6] * elements[15] -
+			elements[1] * elements[7] * elements[14] -
+			elements[5] * elements[2] * elements[15] +
+			elements[5] * elements[3] * elements[14] +
+			elements[13] * elements[2] * elements[7] -
+			elements[13] * elements[3] * elements[6];
+
+		temp[6] = -elements[0] * elements[6] * elements[15] +
+			elements[0] * elements[7] * elements[14] +
+			elements[4] * elements[2] * elements[15] -
+			elements[4] * elements[3] * elements[14] -
+			elements[12] * elements[2] * elements[7] +
+			elements[12] * elements[3] * elements[6];
+
+		temp[10] = elements[0] * elements[5] * elements[15] -
+			elements[0] * elements[7] * elements[13] -
+			elements[4] * elements[1] * elements[15] +
+			elements[4] * elements[3] * elements[13] +
+			elements[12] * elements[1] * elements[7] -
+			elements[12] * elements[3] * elements[5];
+
+		temp[14] = -elements[0] * elements[5] * elements[14] +
+			elements[0] * elements[6] * elements[13] +
+			elements[4] * elements[1] * elements[14] -
+			elements[4] * elements[2] * elements[13] -
+			elements[12] * elements[1] * elements[6] +
+			elements[12] * elements[2] * elements[5];
+
+		temp[3] = -elements[1] * elements[6] * elements[11] +
+			elements[1] * elements[7] * elements[10] +
+			elements[5] * elements[2] * elements[11] -
+			elements[5] * elements[3] * elements[10] -
+			elements[9] * elements[2] * elements[7] +
+			elements[9] * elements[3] * elements[6];
+
+		temp[7] = elements[0] * elements[6] * elements[11] -
+			elements[0] * elements[7] * elements[10] -
+			elements[4] * elements[2] * elements[11] +
+			elements[4] * elements[3] * elements[10] +
+			elements[8] * elements[2] * elements[7] -
+			elements[8] * elements[3] * elements[6];
+
+		temp[11] = -elements[0] * elements[5] * elements[11] +
+			elements[0] * elements[7] * elements[9] +
+			elements[4] * elements[1] * elements[11] -
+			elements[4] * elements[3] * elements[9] -
+			elements[8] * elements[1] * elements[7] +
+			elements[8] * elements[3] * elements[5];
+
+		temp[15] = elements[0] * elements[5] * elements[10] -
+			elements[0] * elements[6] * elements[9] -
+			elements[4] * elements[1] * elements[10] +
+			elements[4] * elements[2] * elements[9] +
+			elements[8] * elements[1] * elements[6] -
+			elements[8] * elements[2] * elements[5];
+
+		float determinant = elements[0] * temp[0] + elements[1] * temp[4] + elements[2] * temp[8] + elements[3] * temp[12];
+		determinant = 1.0f / determinant;
+
+		for (int i = 0; i < 4 * 4; i++)
+			elements[i] = temp[i] * determinant;
+
+		return *this;
+	}
+
 	vec4 mat4::multiply(const vec4& other) const {
 		return vec4 (
 			(column[0].x * other.x) + (column[1].x * other.y) + (column[2].x * other.z) + (column[3].x * other.w),
@@ -79,7 +203,6 @@ namespace ph { namespace math {
 	vec4 operator*(const mat4& left, const vec4& right) {
 		return left.multiply(right);
 	}
-
 
 	mat4 mat4::orthographic(float left, float right, float bottom, float top, float near, float far) {
 		mat4 result(1.0f);
@@ -181,6 +304,11 @@ namespace ph { namespace math {
 		result.elements[2 + 2 * 4] = z * z * omc + c;
 
 		return result;
+	}
+
+	mat4 mat4::invert(const mat4& matrix) {
+		mat4 result = matrix;
+		return result.invert();
 	}
 
 }}

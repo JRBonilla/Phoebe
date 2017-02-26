@@ -4,7 +4,7 @@
 #include <glad/glad.h>
 #include "Texture.h"
 #include "fonts/Font.h"
-#include "../math/Math.h"
+#include "../math/PhoenixMath.h"
 #include "Buffers/IndexBuffer.h"
 #include "Buffers/VertexArray.h"
 #include "shaders/Shader.h"
@@ -19,7 +19,7 @@ namespace ph { namespace graphics {
 #define RENDERER_MAX_TEXTURES	32 - 1
 
 	// Forward declarations to avoid recursive inclusions
-	class RenderObject;
+	class Renderable;
 	struct VertexData;
 
 	using namespace math;
@@ -48,7 +48,7 @@ namespace ph { namespace graphics {
 
 		float GetTextureSlot(Texture* texture);
 
-		void PushRenderObject(const RenderObject* object);
+		void PushRenderSurface(const Renderable* renderable);
 
 		void DrawString(const char* text, const vec3& position, const Font& font, const uint& color = 0xffffffff);
 

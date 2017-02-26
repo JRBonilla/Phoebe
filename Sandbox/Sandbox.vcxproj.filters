@@ -18,7 +18,6 @@
     <None Include="res\shaders\default\default.frag" />
     <None Include="res\shaders\default\default.vert" />
     <None Include="res\shaders\default\text.frag" />
-    <None Include="imgui.ini" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="res\Roboto-Medium.ttf" />
@@ -30,6 +29,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\test2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\icon.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

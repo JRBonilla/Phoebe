@@ -11,13 +11,13 @@ namespace ph { namespace graphics {
 		}
 	}
 
-	void Group::Add(RenderObject* object) {
-		m_Children.push_back(object);
+	void Group::Add(Renderable* renderable) {
+		m_Children.push_back(renderable);
 	}
 
 	void Group::Render(Renderer* renderer) const {
 		renderer->PushMatrix(m_TransformationMatrix);
-		for (RenderObject* child : m_Children) {
+		for (Renderable* child : m_Children) {
 			child->Render(renderer);
 		}
 		renderer->PopMatrix();

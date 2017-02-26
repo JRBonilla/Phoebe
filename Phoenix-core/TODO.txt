@@ -1,7 +1,21 @@
 ###########################################################
-	            SLATE ENGINE - TODO LIST
+	            PHOENIX ENGINE - TODO LIST
 ###########################################################
 
-1. Sprite sheets
-2. Finish Application API
-3. Scene API
+1. Add DirectX support for Windows, alongside GLFW for Mac/Linux
+2. Sprite sheets
+3. Finish Application API
+4. Scene API
+5. Entity API
+6. Editor
+7. C++/CLI bridge
+8. Fix problem with text shader where the format is ABGR instead of RGBA
+9. Begin 3D support
+10. Optimize 2D renderer
+11. SIMD instructions or use GLM
+12. Cleanup API
+	a. Layer API
+	b. Camera API (feels hacky with view matrix)
+13. Begin memory allocation API
+14. File system API
+15. Improve Logging API

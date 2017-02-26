@@ -1,3 +1,0 @@
-﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (C:\Users\TheRe\Documents\Visual Studio 2015\Projects\Phoenix\bin\Release\Intermediates\) contains files shared from another project (Sandbox.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Window.cpp
-  Phoenix-core.vcxproj -> C:\Users\TheRe\Documents\Visual Studio 2015\Projects\Phoenix\bin\Release\Phoenix-core.lib

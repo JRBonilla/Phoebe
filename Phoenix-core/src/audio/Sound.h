@@ -5,7 +5,7 @@
 #include <iostream>
 #include <gorilla/ga.h>
 #include <gorilla/gau.h>
-#include "../utils/FileManager.h"
+#include "../utilities/FileManager.h"
 
 namespace ph{ namespace audio {
 
@@ -14,8 +14,8 @@ namespace ph{ namespace audio {
 		static bool m_IsPlaying;
 		std::string m_Name;
 		std::string m_Filename;
-		ga_Sound* m_Sound;
-		ga_Handle* m_Handle;
+		ga_Sound*	m_Sound;
+		ga_Handle*	m_Handle;
 	public:
 		Sound(const std::string& name, const std::string& filename);
 		~Sound();
@@ -26,10 +26,10 @@ namespace ph{ namespace audio {
 		void Resume();
 		void Stop();
 
-		static void SetFlagAndDestroyOnFinish(ga_Handle* in_handle, void* in_context);
-
 		inline const std::string& GetName() const { return m_Name; }
 		inline const std::string& GetFilename() const { return m_Filename; }
+	private:
+		static void SetFlagAndDestroyOnFinish(ga_Handle* in_handle, void* in_context);
 	};
 
 }}

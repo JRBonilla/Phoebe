@@ -22,7 +22,8 @@ void main()
 	if (fs_in.tid > 0.0)
 	{
 		int tid = int(fs_in.tid - 0.5);
-		tex_color =  fs_in.color * texture2D(textures[tid], fs_in.uv);
+		tex_color =  fs_in.color * texture2D(textures[tid], fs_in.uv.xy);
+		sampled = vec4(1, 1, 1, texture2D(textures[tid], fs_in.uv.xy).r);
 	}
-    gl_FragColor = tex_color;// * intensity;
+    gl_FragColor = tex_color * intensity;
 }

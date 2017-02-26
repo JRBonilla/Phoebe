@@ -4,7 +4,7 @@
 #include <Windows.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "../math/Math.h"
+#include "../math/PhoenixMath.h"
 #include "../audio/SoundManager.h"
 #include "../input/InputManager.h"
 #include "../graphics/fonts/FontManager.h"
@@ -34,6 +34,7 @@ namespace ph {
 		void Update();
 		void ClearBuffer() const;
 		void SwapBuffers() const;
+		void Maximize() const;
 
 		bool Closed() const;
 

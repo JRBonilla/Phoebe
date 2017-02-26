@@ -1,5 +1,5 @@
 #include "Renderer.h"
-#include "objects/RenderObject.h"
+#include "renderables/Renderable.h"
 
 namespace ph { namespace graphics {
 
@@ -11,6 +11,8 @@ namespace ph { namespace graphics {
 		delete m_IndexBuffer;
 		delete m_VertexBuffer;
 		delete m_VertexArray;
+		m_TransformationStack.clear();
+		m_Textures.clear();
 	}
 
 	void Renderer::Init() {
@@ -27,8 +29,8 @@ namespace ph { namespace graphics {
 		BufferLayout layout;
 		
 		layout.Push(SHADER_VERTEX_INDEX, 3, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const void*)0);
-		layout.Push(SHADER_UV_INDEX, 2, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE,     (const void*)(offsetof(VertexData, uv)));
-		layout.Push(SHADER_TID_INDEX, 1, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE,    (const void*)(offsetof(VertexData, tid)));
+		layout.Push(SHADER_UV_INDEX, 2, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const void*)(offsetof(VertexData, uv)));
+		layout.Push(SHADER_TID_INDEX, 1, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const void*)(offsetof(VertexData, tid)));
 		layout.Push(SHADER_COLOR_INDEX, 4, GL_UNSIGNED_BYTE, GL_TRUE, RENDERER_VERTEX_SIZE, (const void*)(offsetof(VertexData, color)));
 		
 		m_VertexBuffer->SetLayout(layout);
@@ -100,20 +102,22 @@ namespace ph { namespace graphics {
 	}
 
 
-	// Pushes a render object to the renderer's buffer
-	void Renderer::PushRenderObject(const RenderObject* object) {
-		// Render object's vertex data
-		const vec2& size			= object->GetSize();
-		const std::vector<vec2>& uv = object->GetUVs();
-		const vec3& position		= object->GetPosition();
-		const unsigned int color	= object->GetColor();
-		Texture* texture			= object->GetTexture();
+	// Pushes a render renderable to the renderer's buffer
+	void Renderer::PushRenderSurface(const Renderable* renderable) {
+		// Render renderable's vertex data
+		const vec2& size			= renderable->GetSize();
+		const std::vector<vec2>& uv = renderable->GetUVs();
+		const vec3& position		= renderable->GetPosition();
+		const unsigned int color	= renderable->GetColor();
+		Texture* texture			= renderable->GetTexture();
 
+		// Find an available texture slot for the renderable's texture
 		float textureSlot = 0.0f;
 		if (texture != nullptr) {
 			textureSlot = GetTextureSlot(texture);
 		}
 
+		// Push renderable data to the buffer
 		m_Buffer->vertex = *m_TransformationBack * position;
 		m_Buffer->uv = uv[0];
 		m_Buffer->tid = textureSlot;
@@ -142,12 +146,11 @@ namespace ph { namespace graphics {
 	}
 
 	void Renderer::DrawString(const char* text, const vec3& position, const Font& font, const uint& color) {
-		PHOENIX_ASSERT(IsInBounds(color, (uint) 0x000000, (uint) 0xffffff), "String color" << color << " is not in bounds!");
 		float x					= position.x;
 		float y					= position.y;
 		float textureSlot		= GetTextureSlot(font.GetTexture());
 		const vec2& scale		= font.GetScale();
-		FontTextureAtlas* atlas = font.GetTextureAtlas();
+		FTTextureAtlas* atlas	= font.GetTextureAtlas();
 
 		for (const char* p = text; *p; p++) {
 			float x0 = x + atlas->characters[*p].left / scale.x;
@@ -194,7 +197,7 @@ namespace ph { namespace graphics {
 	}
 
 	void Renderer::DrawLine(float x0, float y0, float x1, float y1, uint color, float thickness) {
-		const std::vector<vec2>& uv = RenderObject::GetDefaultUVs();
+		const std::vector<vec2>& uv = Renderable::GetDefaultUVs();
 		float textureSlot = 0.0f;
 
 		vec2 normal = vec2(y1 - y0, -(x1 - x0)).normalize() * thickness;
@@ -249,7 +252,7 @@ namespace ph { namespace graphics {
 		float textureSlot = 0.0f;
 		vec3 position(x, y, 0.0f);
 		vec2 size(width, height);
-		const std::vector<vec2>& uv = RenderObject::GetDefaultUVs();
+		const std::vector<vec2>& uv = Renderable::GetDefaultUVs();
 
 		m_Buffer->vertex = *m_TransformationBack * position;
 		m_Buffer->uv = uv[0];
@@ -285,7 +288,7 @@ namespace ph { namespace graphics {
 	void Renderer::FillRectangle(const Rectangle& rectangle, uint color) {
 		FillRectangle(rectangle.minimum(), rectangle.size, color);
 	}
-		
+	
 	void Renderer::Flush() {
 		for (uint i = 0; i < m_Textures.size(); i++) {
 			m_Textures[i]->Bind(i);

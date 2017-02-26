@@ -1,12 +1,13 @@
 #pragma once
 
-#include "Types.h"
 #include "app/Window.h"
 
 #include "audio/Sound.h"
 #include "audio/SoundManager.h"
 
-#include "debug/DebugLayer.h"
+#include "common/Types.h"
+
+#include "debug/DebugInfoLayer.h"
 
 #include "input/InputManager.h"
 
@@ -22,11 +23,11 @@
 
 #include "graphics/fonts/Font.h"
 #include "graphics/fonts/FontManager.h"
-#include "graphics/fonts/FontStructures.h"
+#include "graphics/fonts/FTTextureAtlas.h"
 
-#include "graphics/objects/RenderObject.h"
-#include "graphics/objects/Label.h"
-#include "graphics/objects/Sprite.h"
+#include "graphics/renderables/Renderable.h"
+#include "graphics/renderables/Label.h"
+#include "graphics/renderables/Sprite.h"
 
 #include "graphics/shaders/Shader.h"
 #include "graphics/shaders/ShaderManager.h"
@@ -34,8 +35,8 @@
 #include "layers/Layer.h"
 #include "layers/Group.h"
 
-#include "math/Math.h"
+#include "math/PhoenixMath.h"
 
-#include "utils/Log.h"
-#include "utils/Timer.h"
-#include "utils/FileManager.h"
+#include "utilities/Log.h"
+#include "utilities/Timer.h"
+#include "utilities/FileManager.h"

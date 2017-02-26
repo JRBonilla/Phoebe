@@ -6,8 +6,8 @@ namespace ph{ namespace graphics {
 	math::vec2 FontManager::s_Scale = math::vec2(1.0f, 1.0f);
 
 	void FontManager::Init() {
-		SetScale(math::vec2(43, 43));
-		Add(new Font("default", "res/SourceSansPro-Light.ttf", 28));
+		SetScale(math::vec2(42, 42));
+		Add(new Font("default", "res/SourceSansPro-Light.ttf", 26));
 	}
 
 	void FontManager::Add(Font* font) {

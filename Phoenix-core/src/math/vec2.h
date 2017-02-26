@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 
-namespace ph{ namespace math {
+namespace ph { namespace math {
 
 	struct vec2 {
 		float x, y;

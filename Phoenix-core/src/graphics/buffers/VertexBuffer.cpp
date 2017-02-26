@@ -2,7 +2,7 @@
 
 namespace ph { namespace graphics {
 
-	VertexBuffer::VertexBuffer(BufferUsage usage)
+	VertexBuffer::VertexBuffer(const BufferUsage& usage)
 		: m_Usage(usage) {
 		glGenBuffers(1, &m_BufferID);
 	}

@@ -17,11 +17,13 @@ namespace ph { namespace graphics {
 	}
 
 	GLuint Texture::Load(bool byteAlignment) {
-		unsigned char* pixels = nullptr;
+		byte* pixels = nullptr;
 
 		if (m_FilePath != "NULL") {
-			int bits = 0;
+			uint bits;
 			pixels = Image::Load(m_FilePath.c_str(), &m_Width, &m_Height, &bits, !m_LoadOptions.FlipVertical);
+			if (bits != 24 && bits != 32)
+				PHOENIX_LOG("Unsupported image bit-depth! (" <<  bits << ")");
 			m_Parameters.format = (bits == 24 ? TextureFormat::RGB : TextureFormat::RGBA);
 		}
 
@@ -43,7 +45,7 @@ namespace ph { namespace graphics {
 		glBindTexture(GL_TEXTURE_2D, 0);
 
 		if (pixels != nullptr) {
-			Image::Free(pixels);
+			delete[] pixels;
 		}
 
 		return result;

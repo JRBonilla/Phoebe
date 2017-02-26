@@ -8,6 +8,7 @@ namespace ph { namespace graphics {
 	}
 
 	Shader::~Shader() {
+		m_UniformLocations.clear();
 		glDeleteProgram(m_ShaderID);
 	}
 
@@ -100,7 +101,17 @@ namespace ph { namespace graphics {
 	}
 	
 	GLint Shader::GetUniformLocation(const GLchar* name) {
-		return glGetUniformLocation(m_ShaderID, name);
+		auto it = m_UniformLocations.find(std::string(name));
+		GLint location;
+		if (it != m_UniformLocations.end()) {
+			location = it->second;
+		}
+		else {
+			location = glGetUniformLocation(m_ShaderID, name);
+			PHOENIX_ASSERT(location != -1, "Could not find uniform " << name << " in shader!");
+			m_UniformLocations[name] = location;
+		}
+		return location;
 	}
 	
 	void Shader::SetUniform1f(const GLchar* name, float value) {
@@ -131,7 +142,7 @@ namespace ph { namespace graphics {
 		glUniform4f(GetUniformLocation(name), vector.x, vector.y, vector.z, vector.w);
 	}
 
-	void Shader::SetUniformMat4(const GLchar* name, const math::mat4& matrix) {
+	void Shader::SetUniformmat4(const GLchar* name, const math::mat4& matrix) {
 		glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, matrix.elements);
 	}
 

@@ -1,18 +1,18 @@
 #pragma once
 
 #include <vector>
-#include "../graphics/objects/RenderObject.h"
+#include "../graphics/renderables/Renderable.h"
 
 namespace ph { namespace graphics {
 
-	class Group : public RenderObject {
+	class Group : public Renderable {
 	private:
-		std::vector<RenderObject*> m_Children; // The groups children
+		std::vector<Renderable*> m_Children; // The groups children
 		math::mat4 m_TransformationMatrix;
 	public:
 		Group(const math::mat4& transform);
 		~Group();
-		void Add(RenderObject* object);
+		void Add(Renderable* renderable);
 		void Render(Renderer* renderer) const override;
 	};
 	

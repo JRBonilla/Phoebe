@@ -12,6 +12,7 @@ namespace ph { namespace math {
 				float y;
 			};
 		};
+
 		union {
 			vec2 size;
 			struct {

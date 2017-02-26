@@ -15,7 +15,6 @@ namespace ph{ namespace audio {
 		ga_sound_release(m_Sound);
 	}
 
-
 	void Sound::Play() {
 		if (m_IsPlaying) {
 			return;

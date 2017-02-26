@@ -2,8 +2,9 @@
 
 #include <string>
 #include <glad/glad.h>
-#include "../utils/Image.h"
-#include "../Types.h"
+#include "../utilities/Image.h"
+#include "../common/Types.h"
+#include "../utilities/Log.h"
 
 namespace ph { namespace graphics {
 
@@ -56,7 +57,7 @@ namespace ph { namespace graphics {
 
 		TextureLoadOptions() {
 			FlipHorizontal = false;
-			FlipVertical = false;
+			FlipVertical = true;
 		}
 
 		TextureLoadOptions(bool flipHorizontal, bool flipVertical)
@@ -65,11 +66,11 @@ namespace ph { namespace graphics {
 
 	class Texture {
 	private:
-		std::string m_FilePath;
-		GLuint m_TextureID;
-		GLsizei m_Width, m_Height;
-		TextureParameters m_Parameters;
-		TextureLoadOptions m_LoadOptions;
+		std::string			m_FilePath;
+		GLuint				m_TextureID;
+		GLsizei				m_Width, m_Height;
+		TextureParameters	m_Parameters;
+		TextureLoadOptions	m_LoadOptions;
 	public:
 		Texture(const std::string& path, bool byteAlignment = false, TextureParameters parameters = TextureParameters(), TextureLoadOptions loadOptions = TextureLoadOptions());
 		Texture(uint width, uint height, bool byteAlignment = false, TextureParameters parameters = TextureParameters(), TextureLoadOptions loadOptions = TextureLoadOptions());

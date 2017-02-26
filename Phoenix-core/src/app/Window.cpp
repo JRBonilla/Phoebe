@@ -41,13 +41,16 @@ namespace ph {
 			return false;
 		}
 
+		// Set GLFW window hints
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-		glfwWindowHint(GLFW_RESIZABLE, m_Properties.resizable ? GL_TRUE : GL_FALSE);
+		glfwWindowHint(GLFW_RESIZABLE, m_Properties.resizable ? true : false);
 
-		int iconWidth = 32, iconHeight = 32, iconBits = 0;
-		unsigned char* pixels = Image::Load("res/icon.png", &iconWidth, &iconHeight, &iconBits, false);
+		// Load the window icon
+		int  iconWidth = 32, iconHeight = 32;
+		uint iconBits = 0;
+		byte* pixels = Image::Load("res/icon.png", &iconWidth, &iconHeight, &iconBits, true);
 		GLFWimage icon = { iconWidth, iconHeight, pixels };
 		
 		m_Window = glfwCreateWindow(m_Properties.width, m_Properties.height, m_Title, m_Properties.fullscreen ? glfwGetPrimaryMonitor() : nullptr, nullptr);
@@ -75,6 +78,7 @@ namespace ph {
 		glfwGetFramebufferSize(m_Window, &m_ViewPortWidth, &m_ViewPortHeight);
 		glViewport(0, 0, m_ViewPortWidth, m_ViewPortHeight);
 
+		delete[] pixels;
 		return true;
 	}
 
@@ -124,6 +128,10 @@ namespace ph {
 
 	void Window::SwapBuffers() const {
 		glfwSwapBuffers(m_Window);
+	}
+
+	void Window::Maximize() const {
+		glfwMaximizeWindow(m_Window);
 	}
 
 	bool Window::Closed() const {

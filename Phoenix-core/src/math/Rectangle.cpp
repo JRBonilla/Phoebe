@@ -33,7 +33,7 @@ namespace ph { namespace math {
 	}
 
 	std::ostream& operator<<(std::ostream& stream, const Rectangle& rectangle) {
-		stream << "Rectangle: position(" << rectangle.position.x << ", " << rectangle.position.y << "), size(" << rectangle.size.x << ", " << rectangle.size.y << ")";
+		stream << "Rectangle: position(" << rectangle.position << "), size(" << rectangle.size << ")";
 		return stream;
 	}
 }}

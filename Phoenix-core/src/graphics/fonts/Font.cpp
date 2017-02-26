@@ -12,7 +12,7 @@ namespace ph { namespace graphics {
 			PHOENIX_LOG("Could not open font file " << m_Filename << "!");
 		}
 
-		m_FTAtlas = new FontTextureAtlas(m_FTFace, m_Size);
+		m_FTAtlas = new FTTextureAtlas(m_FTFace, m_Size);
 		FT_Done_FreeType(m_FTLibrary);
 	}
 

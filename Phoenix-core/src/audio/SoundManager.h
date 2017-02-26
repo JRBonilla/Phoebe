@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include "Sound.h"
-#include "../Types.h"
+#include "../common/Types.h"
 
 namespace ph{ namespace audio {
 
