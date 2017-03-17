@@ -16,7 +16,7 @@ namespace ph { namespace graphics {
 	}
 
 	void Renderer::Init() {
-		m_TransformationStack.push_back(mat4::identity());
+		m_TransformationStack.push_back(Mat4::Identity());
 		m_TransformationBack = &m_TransformationStack.back();
 
 		m_VertexArray = new VertexArray();
@@ -56,7 +56,7 @@ namespace ph { namespace graphics {
 		m_VertexArray->Unbind();
 	}
 
-	void Renderer::PushMatrix(const mat4& matrix, bool override) {
+	void Renderer::PushMatrix(const Mat4& matrix, bool override) {
 		if (override) {
 			m_TransformationStack.push_back(matrix);
 		}
@@ -102,12 +102,12 @@ namespace ph { namespace graphics {
 	}
 
 
-	// Pushes a render renderable to the renderer's buffer
-	void Renderer::PushRenderSurface(const Renderable* renderable) {
-		// Render renderable's vertex data
-		const vec2& size			= renderable->GetSize();
-		const std::vector<vec2>& uv = renderable->GetUVs();
-		const vec3& position		= renderable->GetPosition();
+	// Pushes a renderable to the renderer's buffer
+	void Renderer::PushRenderable(const Renderable* renderable) {
+		// Renderable's vertex data
+		const Vec2& size			= renderable->GetSize();
+		const std::vector<Vec2>& uv = renderable->GetUVs();
+		const Vec3& position		= renderable->GetPosition();
 		const unsigned int color	= renderable->GetColor();
 		Texture* texture			= renderable->GetTexture();
 
@@ -124,19 +124,19 @@ namespace ph { namespace graphics {
 		m_Buffer->color = color;
 		m_Buffer++;
 
-		m_Buffer->vertex = *m_TransformationBack * vec3(position.x, position.y + size.y, position.z);
+		m_Buffer->vertex = *m_TransformationBack * Vec3(position.x, position.y + size.y, position.z);
 		m_Buffer->uv = uv[1];
 		m_Buffer->tid = textureSlot;
 		m_Buffer->color = color;
 		m_Buffer++;
 
-		m_Buffer->vertex = *m_TransformationBack * vec3(position.x + size.x, position.y + size.y, position.z);
+		m_Buffer->vertex = *m_TransformationBack * Vec3(position.x + size.x, position.y + size.y, position.z);
 		m_Buffer->uv = uv[2];
 		m_Buffer->tid = textureSlot;
 		m_Buffer->color = color;
 		m_Buffer++;
 
-		m_Buffer->vertex = *m_TransformationBack * vec3(position.x + size.x, position.y, position.z);
+		m_Buffer->vertex = *m_TransformationBack * Vec3(position.x + size.x, position.y, position.z);
 		m_Buffer->uv = uv[3];
 		m_Buffer->tid = textureSlot;
 		m_Buffer->color = color;
@@ -145,17 +145,17 @@ namespace ph { namespace graphics {
 		m_IndexCount += 6;
 	}
 
-	void Renderer::DrawString(const char* text, const vec3& position, const Font& font, const uint& color) {
+	void Renderer::DrawString(const char* text, const Vec3& position, const Font& font, const uint& color) {
 		float x					= position.x;
 		float y					= position.y;
 		float textureSlot		= GetTextureSlot(font.GetTexture());
-		const vec2& scale		= font.GetScale();
+		const Vec2& scale		= font.GetScale();
 		FTTextureAtlas* atlas	= font.GetTextureAtlas();
 
 		for (const char* p = text; *p; p++) {
-			float x0 = x + atlas->characters[*p].left / scale.x;
-			float y0 = y + atlas->characters[*p].top / scale.y;
-			float x1 = x0 + atlas->characters[*p].width / scale.x;
+			float x0 = x  + atlas->characters[*p].left   / scale.x;
+			float y0 = y  + atlas->characters[*p].top    / scale.y;
+			float x1 = x0 + atlas->characters[*p].width  / scale.x;
 			float y1 = y0 - atlas->characters[*p].height / scale.y;
 
 			float u0 = atlas->characters[*p].offset_x;
@@ -164,26 +164,26 @@ namespace ph { namespace graphics {
 			float v1 = v0 + atlas->characters[*p].height / atlas->height;
 
 			// Push the font data to the buffer
-			m_Buffer->vertex = *m_TransformationBack * vec3(x0, y0, 0.0f);
-			m_Buffer->uv = vec2(u0, v0);							 
+			m_Buffer->vertex = *m_TransformationBack * Vec3(x0, y0, 0.0f);
+			m_Buffer->uv = Vec2(u0, v0);							 
 			m_Buffer->tid = textureSlot;							 
 			m_Buffer->color = color;								 
 			m_Buffer++;												 
 																	 
-			m_Buffer->vertex = *m_TransformationBack * vec3(x0, y1, 0.0f);
-			m_Buffer->uv = vec2(u0, v1);							 
+			m_Buffer->vertex = *m_TransformationBack * Vec3(x0, y1, 0.0f);
+			m_Buffer->uv = Vec2(u0, v1);							 
 			m_Buffer->tid = textureSlot;							 
 			m_Buffer->color = color;								 
 			m_Buffer++;												 
 																	 
-			m_Buffer->vertex = *m_TransformationBack * vec3(x1, y1, 0.0f);
-			m_Buffer->uv = vec2(u1, v1);							 
+			m_Buffer->vertex = *m_TransformationBack * Vec3(x1, y1, 0.0f);
+			m_Buffer->uv = Vec2(u1, v1);							 
 			m_Buffer->tid = textureSlot;							 
 			m_Buffer->color = color;								 
 			m_Buffer++;												 
 																	 
-			m_Buffer->vertex = *m_TransformationBack * vec3(x1, y0, 0.0f);
-			m_Buffer->uv = vec2(u1, v0);
+			m_Buffer->vertex = *m_TransformationBack * Vec3(x1, y0, 0.0f);
+			m_Buffer->uv = Vec2(u1, v0);
 			m_Buffer->tid = textureSlot;
 			m_Buffer->color = color;
 			m_Buffer++;
@@ -196,31 +196,35 @@ namespace ph { namespace graphics {
 		}
 	}
 
+	void Renderer::DrawString(const std::string& text, const Vec3& position, const Font& font, const uint& color) {
+		DrawString(text.c_str(), position, font, color);
+	}
+
 	void Renderer::DrawLine(float x0, float y0, float x1, float y1, uint color, float thickness) {
-		const std::vector<vec2>& uv = Renderable::GetDefaultUVs();
+		const std::vector<Vec2>& uv = Renderable::GetDefaultUVs();
 		float textureSlot = 0.0f;
 
-		vec2 normal = vec2(y1 - y0, -(x1 - x0)).normalize() * thickness;
+		Vec2 normal = Vec2(y1 - y0, -(x1 - x0)).normalize() * thickness;
 
-		m_Buffer->vertex = *m_TransformationBack * vec3(x0 + normal.x, y0 + normal.y, 0.0f);
+		m_Buffer->vertex = *m_TransformationBack * Vec3(x0 + normal.x, y0 + normal.y, 0.0f);
 		m_Buffer->uv = uv[0];
 		m_Buffer->tid = textureSlot;
 		m_Buffer->color = color;
 		m_Buffer++;
 
-		m_Buffer->vertex = *m_TransformationBack * vec3(x1 + normal.x, y1 + normal.y, 0.0f);
+		m_Buffer->vertex = *m_TransformationBack * Vec3(x1 + normal.x, y1 + normal.y, 0.0f);
 		m_Buffer->uv = uv[1];
 		m_Buffer->tid = textureSlot;
 		m_Buffer->color = color;
 		m_Buffer++;
 
-		m_Buffer->vertex = *m_TransformationBack * vec3(x1 - normal.x, y1 - normal.y, 0.0f);
+		m_Buffer->vertex = *m_TransformationBack * Vec3(x1 - normal.x, y1 - normal.y, 0.0f);
 		m_Buffer->uv = uv[2];
 		m_Buffer->tid = textureSlot;
 		m_Buffer->color = color;
 		m_Buffer++;
 
-		m_Buffer->vertex = *m_TransformationBack * vec3(x0 - normal.x, y0 - normal.y, 0);
+		m_Buffer->vertex = *m_TransformationBack * Vec3(x0 - normal.x, y0 - normal.y, 0);
 		m_Buffer->uv = uv[3];
 		m_Buffer->tid = textureSlot;
 		m_Buffer->color = color;
@@ -229,7 +233,7 @@ namespace ph { namespace graphics {
 		m_IndexCount += 6;
 	}
 
-	void Renderer::DrawLine(const vec2& start, const vec2& end, uint color, float thickness) {
+	void Renderer::DrawLine(const Vec2& start, const Vec2& end, uint color, float thickness) {
 		DrawLine(start.x, start.y, end.x, end.y, color, thickness);
 	}
 	
@@ -240,7 +244,7 @@ namespace ph { namespace graphics {
 		DrawLine(x, y + height, x, y, color);
 	}
 
-	void Renderer::DrawRectangle(const vec2& position, const vec2& size, uint color) {
+	void Renderer::DrawRectangle(const Vec2& position, const Vec2& size, uint color) {
 		DrawRectangle(position.x, position.y, size.x, size.y, color);
 	}
 
@@ -250,9 +254,9 @@ namespace ph { namespace graphics {
 
 	void Renderer::FillRectangle(float x, float y, float width, float height, uint color) {
 		float textureSlot = 0.0f;
-		vec3 position(x, y, 0.0f);
-		vec2 size(width, height);
-		const std::vector<vec2>& uv = Renderable::GetDefaultUVs();
+		Vec3 position(x, y, 0.0f);
+		Vec2 size(width, height);
+		const std::vector<Vec2>& uv = Renderable::GetDefaultUVs();
 
 		m_Buffer->vertex = *m_TransformationBack * position;
 		m_Buffer->uv = uv[0];
@@ -260,19 +264,19 @@ namespace ph { namespace graphics {
 		m_Buffer->color = color;
 		m_Buffer++;
 
-		m_Buffer->vertex = *m_TransformationBack * vec3(position.x, position.y + size.y, position.z);
+		m_Buffer->vertex = *m_TransformationBack * Vec3(position.x, position.y + size.y, position.z);
 		m_Buffer->uv = uv[1];
 		m_Buffer->tid = textureSlot;
 		m_Buffer->color = color;
 		m_Buffer++;
 
-		m_Buffer->vertex = *m_TransformationBack * vec3(position.x + size.x, position.y + size.y, position.z);
+		m_Buffer->vertex = *m_TransformationBack * Vec3(position.x + size.x, position.y + size.y, position.z);
 		m_Buffer->uv = uv[2];
 		m_Buffer->tid = textureSlot;
 		m_Buffer->color = color;
 		m_Buffer++;
 
-		m_Buffer->vertex = *m_TransformationBack * vec3(position.x + size.x, position.y, position.z);
+		m_Buffer->vertex = *m_TransformationBack * Vec3(position.x + size.x, position.y, position.z);
 		m_Buffer->uv = uv[3];
 		m_Buffer->tid = textureSlot;
 		m_Buffer->color = color;
@@ -281,7 +285,7 @@ namespace ph { namespace graphics {
 		m_IndexCount += 6;
 	}
 
-	void Renderer::FillRectangle(const vec2& position, const vec2& size, uint color) {
+	void Renderer::FillRectangle(const Vec2& position, const Vec2& size, uint color) {
 		FillRectangle(position.x, position.y, size.x, size.y, color);
 	}
 

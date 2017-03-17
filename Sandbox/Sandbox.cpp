@@ -3,7 +3,7 @@
 #define TEST_RENDERING 1
 
 #if TEST_RENDERING
-#define TEST_BATCH_RENDER 1
+#define TEST_BATCH_RENDER 0
 
 int main(int argc, char* args[]) {
 	using namespace ph;
@@ -13,7 +13,7 @@ int main(int argc, char* args[]) {
 	using namespace debug;
 
 	Window window("Phoenix Sandbox", 1152, 648);
-	mat4 projectionMatrix = mat4::orthographic(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f);
+	Mat4 projectionMatrix = Mat4::Orthographic(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f);
 	Layer* test2D = new Layer(new Renderer, ShaderManager::Get("default"), projectionMatrix);
 	
 	srand(time(nullptr));
@@ -61,7 +61,7 @@ int main(int argc, char* args[]) {
 
 		// Set light position
 		ShaderManager::Get("default")->Enable();
-		vec2 light_position = vec2(InputManager::GetInstance().GetMouseX() * 32.0f / window.GetWidth() - 16.0f, 9.0f - InputManager::GetInstance().GetMouseY() * 18.0f / window.GetHeight());
+		Vec2 light_position = Vec2(InputManager::GetInstance().GetMouseX() * 32.0f / window.GetWidth() - 16.0f, 9.0f - InputManager::GetInstance().GetMouseY() * 18.0f / window.GetHeight());
 		ShaderManager::Get("default")->SetUniform2f("light_position", light_position);
 
 		currentFrame = Timer::GetInstance()->Elapsed();
@@ -98,7 +98,7 @@ int main(int argc, char* args[]) {
 #else
 int main(int argc, char* args[]) {
 	ph::Window window("Phoenix Sandbox", 1152, 648);
-	
+
 	while (!window.Closed()) {
 		window.Update();
 		window.ClearBuffer();

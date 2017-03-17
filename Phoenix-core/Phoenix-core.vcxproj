@@ -87,7 +87,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>PHOENIX_DLL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>PHOENIX_DLL;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>UninitializedLocalUsageCheck</BasicRuntimeChecks>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
@@ -112,7 +112,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>PHOENIX_DLL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>PHOENIX_DLL;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
@@ -166,11 +166,11 @@
     <ClCompile Include="src\graphics\Texture.cpp" />
     <ClCompile Include="src\input\InputManager.cpp" />
     <ClCompile Include="src\graphics\particle\Particle.cpp" />
-    <ClCompile Include="src\math\mat4.cpp" />
+    <ClCompile Include="src\math\Mat4.cpp" />
     <ClCompile Include="src\math\Rectangle.cpp" />
-    <ClCompile Include="src\math\vec2.cpp" />
-    <ClCompile Include="src\math\vec3.cpp" />
-    <ClCompile Include="src\math\vec4.cpp" />
+    <ClCompile Include="src\math\Vec2.cpp" />
+    <ClCompile Include="src\math\Vec3.cpp" />
+    <ClCompile Include="src\math\Vec4.cpp" />
     <ClCompile Include="src\scene\Scene.cpp" />
     <ClCompile Include="src\system\Memory.cpp" />
     <ClCompile Include="src\utilities\FileManager.cpp" />
@@ -188,13 +188,13 @@
     <ClInclude Include="src\graphics\buffers\Framebuffer.h" />
     <ClInclude Include="src\graphics\shaders\ShaderManager.h" />
     <ClInclude Include="src\graphics\particle\Particle.h" />
-    <ClInclude Include="src\math\Functions.h" />
-    <ClInclude Include="src\math\mat4.h" />
+    <ClInclude Include="src\math\MathUtils.h" />
+    <ClInclude Include="src\math\Mat4.h" />
     <ClInclude Include="src\math\PhoenixMath.h" />
     <ClInclude Include="src\math\Rectangle.h" />
-    <ClInclude Include="src\math\vec2.h" />
-    <ClInclude Include="src\math\vec3.h" />
-    <ClInclude Include="src\math\vec4.h" />
+    <ClInclude Include="src\math\Vec2.h" />
+    <ClInclude Include="src\math\Vec3.h" />
+    <ClInclude Include="src\math\Vec4.h" />
     <ClInclude Include="src\Phoenix.h" />
     <ClInclude Include="src\scene\Scene.h" />
     <ClInclude Include="src\Slate.h" />

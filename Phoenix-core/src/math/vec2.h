@@ -3,46 +3,46 @@
 
 namespace ph { namespace math {
 
-	struct vec2 {
+	struct Vec2 {
 		float x, y;
 
-		vec2();
-		vec2(const float& x, const float& y);
+		Vec2();
+		Vec2(const float& x, const float& y);
 
-		vec2& add(const vec2& other);
-		vec2& subtract(const vec2& other);
-		vec2& multiply(const vec2& other);
-		vec2& divide(const vec2& other);
+		Vec2& add(const Vec2& other);
+		Vec2& subtract(const Vec2& other);
+		Vec2& multiply(const Vec2& other);
+		Vec2& divide(const Vec2& other);
 
-		friend vec2 operator+(vec2 left, const vec2& right);
-		friend vec2 operator-(vec2 left, const vec2& right);
-		friend vec2 operator*(vec2 left, const vec2& right);
-		friend vec2 operator/(vec2 left, const vec2& right);
+		friend Vec2 operator+(Vec2 left, const Vec2& right);
+		friend Vec2 operator-(Vec2 left, const Vec2& right);
+		friend Vec2 operator*(Vec2 left, const Vec2& right);
+		friend Vec2 operator/(Vec2 left, const Vec2& right);
 
-		friend vec2 operator+(vec2 left, float value);
-		friend vec2 operator-(vec2 left, float value);
-		friend vec2 operator*(vec2 left, float value);
-		friend vec2 operator/(vec2 left, float value);
+		friend Vec2 operator+(Vec2 left, float value);
+		friend Vec2 operator-(Vec2 left, float value);
+		friend Vec2 operator*(Vec2 left, float value);
+		friend Vec2 operator/(Vec2 left, float value);
 
-		vec2& operator+=(const vec2& other);
-		vec2& operator-=(const vec2& other);
-		vec2& operator*=(const vec2& other);
-		vec2& operator/=(const vec2& other);
+		Vec2& operator+=(const Vec2& other);
+		Vec2& operator-=(const Vec2& other);
+		Vec2& operator*=(const Vec2& other);
+		Vec2& operator/=(const Vec2& other);
 
-		bool operator==(const vec2& other) const;
-		bool operator!=(const vec2& other) const;
+		bool operator==(const Vec2& other) const;
+		bool operator!=(const Vec2& other) const;
 
-		bool operator<(const vec2& other) const;
-		bool operator>(const vec2& other) const;
-		bool operator>=(const vec2& other) const;
-		bool operator<=(const vec2& other) const;
+		bool operator<(const Vec2& other) const;
+		bool operator>(const Vec2& other) const;
+		bool operator>=(const Vec2& other) const;
+		bool operator<=(const Vec2& other) const;
 
 		float magnitude() const;
-		vec2 normalize() const;
-		float distance(const vec2& other) const;
-		float dot(const vec2& other) const;
+		Vec2 normalize() const;
+		float distance(const Vec2& other) const;
+		float dot(const Vec2& other) const;
 
-		friend std::ostream& operator<<(std::ostream& stream, const vec2& other);
+		friend std::ostream& operator<<(std::ostream& stream, const Vec2& other);
 	};
 
 }}

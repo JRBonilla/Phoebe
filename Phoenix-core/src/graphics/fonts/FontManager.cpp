@@ -3,10 +3,10 @@
 namespace ph{ namespace graphics {
 
 	std::vector<Font*> FontManager::s_Fonts;
-	math::vec2 FontManager::s_Scale = math::vec2(1.0f, 1.0f);
+	math::Vec2 FontManager::s_Scale = math::Vec2(1.0f, 1.0f);
 
 	void FontManager::Init() {
-		SetScale(math::vec2(42, 42));
+		SetScale(math::Vec2(42, 42));
 		Add(new Font("default", "res/SourceSansPro-Light.ttf", 26));
 	}
 
@@ -34,7 +34,7 @@ namespace ph{ namespace graphics {
 		}
 	}
 	
-	void FontManager::SetScale(const math::vec2& scale) {
+	void FontManager::SetScale(const math::Vec2& scale) {
 		s_Scale = scale;
 	}
 

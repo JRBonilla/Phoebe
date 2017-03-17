@@ -3,10 +3,10 @@
 
 namespace ph { namespace graphics {
 
-	Layer::Layer(Renderer* renderer, Shader* shader, const math::mat4& projectionMatrix, bool visible)
+	Layer::Layer(Renderer* renderer, Shader* shader, const math::Mat4& projectionMatrix, bool visible)
 		: m_Renderer(renderer), m_Shader(shader), m_ProjectionMatrix(projectionMatrix), m_Visible(visible) {
 		m_Shader->Enable();
-		m_Shader->SetUniformmat4("pr_matrix", m_ProjectionMatrix);
+		m_Shader->SetUniformMat4("pr_matrix", m_ProjectionMatrix);
 		m_Shader->Disable();
 		m_Camera = new OrthographicCamera(m_ProjectionMatrix);
 	}

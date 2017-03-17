@@ -1,10 +1,17 @@
 #pragma once
 
+#include <string>
+#include "Window.h"
+
 namespace ph {
 
 	class Application {
+	private:
+		Window* m_Window;
+		std::string m_Title;
+		uint m_Width, m_Height;
 	public:
-		Application();
+		Application(const std::string& title, uint width, uint height);
 		~Application();
 
 		void Start();

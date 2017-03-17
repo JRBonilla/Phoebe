@@ -42,7 +42,7 @@ namespace ph {
 		inline int GetHeight() const { return m_Properties.height; }
 		inline GLFWwindow* GetGLFWWindow() const { return m_Window; }
 
-		inline void SetClearColor(const math::vec4& color) const { glClearColor(color.x, color.y, color.z, color.w); }
+		inline void SetClearColor(const math::Vec4& color) const { glClearColor(color.x, color.y, color.z, color.w); }
 	private:
 		bool Init();
 		void CenterWindowOnScreen();

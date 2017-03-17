@@ -40,10 +40,10 @@ namespace ph { namespace graphics {
 		void SetUniform1fv(const GLchar* name, int count, float* value);
 		void SetUniform1i(const GLchar* name, int value);
 		void SetUniform1iv(const GLchar* name, int count, int* value);
-		void SetUniform2f(const GLchar* name, const math::vec2& vector);
-		void SetUniform3f(const GLchar* name, const math::vec3& vector);
-		void SetUniform4f(const GLchar* name, const math::vec4& vector);
-		void SetUniformmat4(const GLchar* name, const math::mat4& matrix);
+		void SetUniform2f(const GLchar* name, const math::Vec2& vector);
+		void SetUniform3f(const GLchar* name, const math::Vec3& vector);
+		void SetUniform4f(const GLchar* name, const math::Vec4& vector);
+		void SetUniformMat4(const GLchar* name, const math::Mat4& matrix);
 	private:
 		GLuint Load();
 		GLuint Compile(GLuint& id, const char* path);

@@ -28,8 +28,8 @@ namespace ph { namespace graphics {
 	{
 	private:
 		GLsizei					m_IndexCount;
-		const mat4*				m_TransformationBack;
-		std::vector<mat4>		m_TransformationStack;
+		const Mat4*				m_TransformationBack;
+		std::vector<Mat4>		m_TransformationStack;
 		IndexBuffer*			m_IndexBuffer;
 		VertexData*				m_Buffer;
 		VertexArray*			m_VertexArray;
@@ -39,7 +39,7 @@ namespace ph { namespace graphics {
 		Renderer();
 		~Renderer();
 
-		void PushMatrix(const mat4& matrix, bool override = false);
+		void PushMatrix(const Mat4& matrix, bool override = false);
 		void PopMatrix();
 
 		void Begin();
@@ -48,19 +48,20 @@ namespace ph { namespace graphics {
 
 		float GetTextureSlot(Texture* texture);
 
-		void PushRenderSurface(const Renderable* renderable);
+		void PushRenderable(const Renderable* renderable);
 
-		void DrawString(const char* text, const vec3& position, const Font& font, const uint& color = 0xffffffff);
+		void DrawString(const char* text, const Vec3& position, const Font& font, const uint& color = 0xffffffff);
+		void DrawString(const std::string& text, const Vec3& position, const Font& font, const uint& color = 0xffffffff);
 
 		void DrawLine(float x0, float y0, float x1, float y1, uint color, float thickness = 0.1f);
-		void DrawLine(const vec2& start, const vec2& end, uint color, float thickness = 0.1f);
+		void DrawLine(const Vec2& start, const Vec2& end, uint color, float thickness = 0.1f);
 		
 		void DrawRectangle(float x, float y, float width, float height, uint color = 0xffffffff);
-		void DrawRectangle(const vec2& position, const vec2& size, uint color = 0xffffffff);
+		void DrawRectangle(const Vec2& position, const Vec2& size, uint color = 0xffffffff);
 		void DrawRectangle(const Rectangle& rectangle, uint color = 0xffffffff);
 
 		void FillRectangle(float x, float y, float width, float height, uint color = 0xffffffff);
-		void FillRectangle(const vec2& position, const vec2& size, uint color = 0xffffffff);
+		void FillRectangle(const Vec2& position, const Vec2& size, uint color = 0xffffffff);
 		void FillRectangle(const Rectangle& rectangle, uint color = 0xffffffff);
 	private:
 		void Init();

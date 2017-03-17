@@ -3,4 +3,8 @@
 	<s:String x:Key="/Default/RunConfigs/Config/=4E054538A87E5B408C6BCB19ADE218E3/Type/@EntryValue">project</s:String>
 	<s:String x:Key="/Default/RunConfigs/Config/=4E054538A87E5B408C6BCB19ADE218E3/Name/@EntryValue">Flow-core</s:String>
 	<s:String x:Key="/Default/RunConfigs/Config/=4E054538A87E5B408C6BCB19ADE218E3/ProjectGuid/@EntryValue">AE15A5BE1B89334594B5D44E0DD029C4</s:String>
-	<s:String x:Key="/Default/RunConfigs/Active/@EntryValue">4E054538A87E5B408C6BCB19ADE218E3</s:String></wpf:ResourceDictionary>
+	<s:String x:Key="/Default/RunConfigs/Active/@EntryValue">95E2A6947DD96A4C87C93E9196F8780B</s:String>
+	<s:Boolean x:Key="/Default/RunConfigs/Config/=95E2A6947DD96A4C87C93E9196F8780B/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/RunConfigs/Config/=95E2A6947DD96A4C87C93E9196F8780B/Name/@EntryValue">Sandbox</s:String>
+	<s:String x:Key="/Default/RunConfigs/Config/=95E2A6947DD96A4C87C93E9196F8780B/ProjectGuid/@EntryValue">4D41BCF0DF6A8247BC006E8623E59CE5</s:String>
+	<s:String x:Key="/Default/RunConfigs/Config/=95E2A6947DD96A4C87C93E9196F8780B/Type/@EntryValue">project</s:String></wpf:ResourceDictionary>

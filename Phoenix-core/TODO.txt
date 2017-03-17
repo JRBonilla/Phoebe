@@ -19,3 +19,9 @@
 13. Begin memory allocation API
 14. File system API
 15. Improve Logging API
+16. Particle engine
+17. Framebuffer
+18. Optimize managers
+19. 2D physics
+	a. AABB's
+	b. Implement Box2D

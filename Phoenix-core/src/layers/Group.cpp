@@ -2,7 +2,7 @@
 
 namespace ph { namespace graphics {
 
-	Group::Group(const math::mat4& transform)
+	Group::Group(const math::Mat4& transform)
 		: m_TransformationMatrix(transform) { }
 
 	Group::~Group() {

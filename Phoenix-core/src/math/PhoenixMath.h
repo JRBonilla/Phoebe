@@ -1,8 +1,8 @@
 #pragma once
 
-#include "vec2.h"
-#include "vec3.h"
-#include "vec4.h"
-#include "mat4.h"
-#include "Functions.h"
+#include "Vec2.h"
+#include "Vec3.h"
+#include "Vec4.h"
+#include "Mat4.h"
+#include "MathUtils.h"
 #include "Rectangle.h"

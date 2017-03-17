@@ -2,11 +2,11 @@
 
 namespace ph { namespace graphics {
 
-	Camera::Camera(const mat4& projectionMatrix)
+	Camera::Camera(const Mat4& projectionMatrix)
 		: m_ProjectionMatrix(projectionMatrix) {
-		m_ViewMatrix = mat4::identity();
-		m_Position = vec3();
-		m_Rotation = vec3();
+		m_ViewMatrix = Mat4::Identity();
+		m_Position = Vec3();
+		m_Rotation = Vec3();
 	}
 
 }}

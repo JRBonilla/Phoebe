@@ -6,7 +6,7 @@ namespace ph { namespace graphics {
 
 	class OrthographicCamera : public Camera {
 	public:
-		OrthographicCamera(const mat4& projectionMatrix);
+		OrthographicCamera(const Mat4& projectionMatrix);
 		~OrthographicCamera();
 
 		void Focus() override;

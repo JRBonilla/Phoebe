@@ -2,17 +2,17 @@
 
 namespace ph { namespace math {
 
-	Rectangle::Rectangle() : position(vec2()), size(vec2()) { }
+	Rectangle::Rectangle() : position(Vec2()), size(Vec2()) { }
 
-	Rectangle::Rectangle(const vec2& position, const vec2& size) : position(position), size(size) { }
+	Rectangle::Rectangle(const Vec2& position, const Vec2& size) : position(position), size(size) { }
 
-	Rectangle::Rectangle(float x, float y, float width, float height) : position(vec2(x, y)), size(vec2(width, height)) { }
+	Rectangle::Rectangle(float x, float y, float width, float height) : position(Vec2(x, y)), size(Vec2(width, height)) { }
 
 	bool Rectangle::intersects(const Rectangle& other) const {
 		return (maximum() > other.position && position < other.maximum()) || (position > other.maximum() && maximum() < other.position);
 	}
 
-	bool Rectangle::contains(const vec2& point) const {
+	bool Rectangle::contains(const Vec2& point) const {
 		return (point > minimum()) && (point < maximum());
 	}
 

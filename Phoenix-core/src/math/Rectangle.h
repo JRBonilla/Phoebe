@@ -1,12 +1,12 @@
 #pragma once
 
-#include "vec2.h"
+#include "Vec2.h"
 
 namespace ph { namespace math {
 
 	struct Rectangle {
 		union {
-			vec2 position;
+			Vec2 position;
 			struct {
 				float x;
 				float y;
@@ -14,7 +14,7 @@ namespace ph { namespace math {
 		};
 
 		union {
-			vec2 size;
+			Vec2 size;
 			struct {
 				float width;
 				float height;
@@ -22,15 +22,15 @@ namespace ph { namespace math {
 		};
 
 		Rectangle();
-		Rectangle(const vec2& position, const vec2& size);
+		Rectangle(const Vec2& position, const Vec2& size);
 		Rectangle(float x, float y, float width, float height);
 
 		bool intersects(const Rectangle& other) const;
-		bool contains(const vec2& point) const;
+		bool contains(const Vec2& point) const;
 
-		inline vec2 minimum() const { return position; }
-		inline vec2 maximum() const { return position + size; }
-		inline vec2 center() const { return (minimum() + maximum()) * 0.5f; }
+		inline Vec2 minimum() const { return position; }
+		inline Vec2 maximum() const { return position + size; }
+		inline Vec2 center() const { return (minimum() + maximum()) * 0.5f; }
 
 		bool operator==(const Rectangle& other) const;
 		bool operator!=(const Rectangle& other) const;

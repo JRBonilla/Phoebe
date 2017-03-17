@@ -9,7 +9,7 @@ namespace ph { namespace graphics {
 	class Font {
 	private:
 		float			m_Size;
-		math::vec2		m_Scale;
+		math::Vec2		m_Scale;
 		std::string		m_Name;
 		std::string		m_Filename;
 		FTTextureAtlas* m_FTAtlas;
@@ -19,10 +19,10 @@ namespace ph { namespace graphics {
 		Font(const std::string& name, const std::string& filename, float size);
 		~Font();
 
-		inline void SetScale(const math::vec2& scale) { m_Scale = scale; }
+		inline void SetScale(const math::Vec2& scale) { m_Scale = scale; }
 
 		inline const float GetSize() const { return m_Size; }
-		inline const math::vec2& GetScale() const { return m_Scale; }
+		inline const math::Vec2& GetScale() const { return m_Scale; }
 		inline const std::string& GetName() const { return m_Name; }
 		inline const std::string& GetFilename() const { return m_Filename; }
 		inline Texture* GetTexture() const { return m_FTAtlas->texture; }

@@ -3,7 +3,7 @@
 namespace ph { namespace graphics {
 
 	Font::Font(const std::string& name, const std::string& filename, float size)
-		: m_Name(name), m_Filename(filename), m_Size(size), m_Scale(math::vec2(1, 1)) {
+		: m_Name(name), m_Filename(filename), m_Size(size), m_Scale(math::Vec2(1, 1)) {
 		if (FT_Init_FreeType(&m_FTLibrary)) {
 			PHOENIX_LOG("Could not initialize FreeType library!");
 		}

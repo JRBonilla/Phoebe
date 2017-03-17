@@ -9,14 +9,14 @@ namespace ph { namespace graphics {
 
 	class Layer {
 	protected:
-		bool m_Visible;
-		Renderer* m_Renderer;
-		std::vector<Renderable*> m_Renderables;
-		Shader* m_Shader;
-		mat4 m_ProjectionMatrix;
-		OrthographicCamera* m_Camera;
+		bool						m_Visible;
+		Renderer*					m_Renderer;
+		std::vector<Renderable*>	m_Renderables;
+		Shader*						m_Shader;
+		Mat4						m_ProjectionMatrix;
+		OrthographicCamera*			m_Camera;
 	public:
-		Layer(Renderer* renderer, Shader* shader, const math::mat4& projectionMatrix, bool visible = true);
+		Layer(Renderer* renderer, Shader* shader, const math::Mat4& projectionMatrix, bool visible = true);
 		virtual ~Layer();
 		
 		virtual void Init();

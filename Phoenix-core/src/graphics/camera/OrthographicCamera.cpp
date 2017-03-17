@@ -2,7 +2,7 @@
 
 namespace ph { namespace graphics {
 
-	OrthographicCamera::OrthographicCamera(const mat4& projectionMatrix)
+	OrthographicCamera::OrthographicCamera(const Mat4& projectionMatrix)
 		: Camera(projectionMatrix) { }
 
 	OrthographicCamera::~OrthographicCamera() { }
@@ -11,8 +11,8 @@ namespace ph { namespace graphics {
 
 	void OrthographicCamera::Update()
 	{
-		mat4 rotation = mat4::rotate(0.0f, m_Rotation);
-		mat4 translation = mat4::translate(m_Position);
+		Mat4 rotation = Mat4::Rotate(0.0f, m_Rotation);
+		Mat4 translation = Mat4::Translate(m_Position);
 		m_ViewMatrix = rotation * translation;
 	}
 

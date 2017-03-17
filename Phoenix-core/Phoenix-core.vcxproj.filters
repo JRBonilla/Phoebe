@@ -93,9 +93,6 @@
     <ClCompile Include="src\scene\Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\math\mat4.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\math\Rectangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -124,6 +121,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\debug\DebugInfoLayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\math\mat4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -206,19 +206,10 @@
     <ClInclude Include="src\utilities\Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\entity\Entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\entity\Component.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\graphics\fonts\FTTextureAtlas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\scene\Scene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\math\mat4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\math\Rectangle.h">
@@ -257,10 +248,19 @@
     <ClInclude Include="src\math\PhoenixMath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\math\Functions.h">
+    <ClInclude Include="src\debug\DebugInfoLayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\debug\DebugInfoLayer.h">
+    <ClInclude Include="src\math\mat4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\math\MathUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entity\Entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entity\Component.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

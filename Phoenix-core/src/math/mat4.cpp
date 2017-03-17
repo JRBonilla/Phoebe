@@ -1,12 +1,12 @@
-#include "mat4.h"
+#include "Mat4.h"
 
 namespace ph { namespace math {
 
-	mat4::mat4() {
+	Mat4::Mat4() {
 		memset(elements, 0, 4 * 4 * sizeof(float));
 	}
 
-	mat4::mat4(float diagonal) {
+	Mat4::Mat4(float diagonal) {
 		memset(elements, 0, 4 * 4 * sizeof(float));
 
 		elements[0 + 0 * 4] = diagonal;
@@ -15,11 +15,11 @@ namespace ph { namespace math {
 		elements[3 + 3 * 4] = diagonal;
 	}
 
-	mat4::mat4(float* elements) {
+	Mat4::Mat4(float* elements) {
 		memcpy(this->elements, elements, 4 * 4 * sizeof(float));
 	}
 
-	mat4::mat4(const vec4& col0, const vec4& col1, const vec4& col2, const vec4& col3) {
+	Mat4::Mat4(const Vec4& col0, const Vec4& col1, const Vec4& col2, const Vec4& col3) {
 		column[0] = col0;
 		column[1] = col1;
 		column[2] = col2;
@@ -27,11 +27,11 @@ namespace ph { namespace math {
 	}
 
 
-	mat4 mat4::identity() {
-		return mat4(1.0f);
+	Mat4 Mat4::Identity() {
+		return Mat4(1.0f);
 	}
 
-	mat4& mat4::multiply(const mat4& other) {
+	Mat4& Mat4::multiply(const Mat4& other) {
 		float data[16];
 		for (int y = 0; y < 4; y++) {
 			for (int x = 0; x < 4; x++) {
@@ -47,27 +47,27 @@ namespace ph { namespace math {
 		return *this;
 	}
 
-	mat4 operator*(mat4 left, const mat4& right) {
+	Mat4 operator*(Mat4 left, const Mat4& right) {
 		return left.multiply(right);
 	}
 
-	mat4& mat4::operator*=(const mat4& other) {
+	Mat4& Mat4::operator*=(const Mat4& other) {
 		return multiply(other);
 	}
 
-	vec3 mat4::multiply(const vec3& other) const {
-		return vec3 (
+	Vec3 Mat4::multiply(const Vec3& other) const {
+		return Vec3 (
 			(column[0].x * other.x) + (column[1].x * other.y) + (column[2].x * other.z) + (column[3].x * 1),
 			(column[0].y * other.x) + (column[1].y * other.y) + (column[2].y * other.z) + (column[3].y * 1),
 			(column[0].z * other.x) + (column[1].z * other.y) + (column[2].z * other.z) + (column[3].z * 1)
 		);
 	}
 
-	vec3 operator*(const mat4& left, const vec3& right) {
+	Vec3 operator*(const Mat4& left, const Vec3& right) {
 		return left.multiply(right);
 	}
 
-	mat4& mat4::invert() {
+	Mat4& Mat4::Invert() {
 		float temp[16];
 
 		temp[0] = elements[5] * elements[10] * elements[15] -
@@ -185,14 +185,15 @@ namespace ph { namespace math {
 		float determinant = elements[0] * temp[0] + elements[1] * temp[4] + elements[2] * temp[8] + elements[3] * temp[12];
 		determinant = 1.0f / determinant;
 
-		for (int i = 0; i < 4 * 4; i++)
+		for (int i = 0; i < 4 * 4; i++) {
 			elements[i] = temp[i] * determinant;
+		}
 
 		return *this;
 	}
 
-	vec4 mat4::multiply(const vec4& other) const {
-		return vec4 (
+	Vec4 Mat4::multiply(const Vec4& other) const {
+		return Vec4 (
 			(column[0].x * other.x) + (column[1].x * other.y) + (column[2].x * other.z) + (column[3].x * other.w),
 			(column[0].y * other.x) + (column[1].y * other.y) + (column[2].y * other.z) + (column[3].y * other.w),
 			(column[0].z * other.x) + (column[1].z * other.y) + (column[2].z * other.z) + (column[3].z * other.w),
@@ -200,12 +201,12 @@ namespace ph { namespace math {
 		);
 	}
 
-	vec4 operator*(const mat4& left, const vec4& right) {
+	Vec4 operator*(const Mat4& left, const Vec4& right) {
 		return left.multiply(right);
 	}
 
-	mat4 mat4::orthographic(float left, float right, float bottom, float top, float near, float far) {
-		mat4 result(1.0f);
+	Mat4 Mat4::Orthographic(float left, float right, float bottom, float top, float near, float far) {
+		Mat4 result(1.0f);
 
 		result.elements[0 + 0 * 4] = 2.0f / (right - left);
 		result.elements[1 + 1 * 4] = 2.0f / (top - bottom);
@@ -218,8 +219,8 @@ namespace ph { namespace math {
 		return result;
 	}
 
-	mat4 mat4::perspective(float fov, float aspectRatio, float near, float far) {
-		mat4 result;
+	Mat4 Mat4::Perspective(float fov, float aspectRatio, float near, float far) {
+		Mat4 result;
 
 		float q = 1.0f / tan(toRadians(0.5f * fov));
 		float a = q / aspectRatio;
@@ -236,11 +237,11 @@ namespace ph { namespace math {
 		return result;
 	}
 
-	mat4 mat4::lookAt(const vec3& camera, const vec3& object, const vec3& up) {
-		mat4 result = identity();
-		vec3 f = (object - camera).normalize();
-		vec3 s = f.cross(up.normalize());
-		vec3 u = s.cross(f);
+	Mat4 Mat4::LookAt(const Vec3& camera, const Vec3& object, const Vec3& up) {
+		Mat4 result = Identity();
+		Vec3 f = (object - camera).normalize();
+		Vec3 s = f.cross(up.normalize());
+		Vec3 u = s.cross(f);
 
 		result.elements[0 + 0 * 4] = s.x;
 		result.elements[1 + 0 * 4] = s.y;
@@ -254,12 +255,12 @@ namespace ph { namespace math {
 		result.elements[1 + 2 * 4] = -f.y;
 		result.elements[2 + 2 * 4] = -f.z;
 
-		return result * translate(vec3(-camera.x, -camera.y, -camera.z));
+		return result * Translate(Vec3(-camera.x, -camera.y, -camera.z));
 	}
 
 
-	mat4 mat4::translate(const vec3& translation) {
-		mat4 result(1.0f);
+	Mat4 Mat4::Translate(const Vec3& translation) {
+		Mat4 result(1.0f);
 
 		result.elements[0 + 3 * 4] = translation.x;
 		result.elements[1 + 3 * 4] = translation.y;
@@ -268,8 +269,8 @@ namespace ph { namespace math {
 		return result;
 	}
 
-	struct mat4 mat4::scale(const vec3& scale) {
-		mat4 result(1.0f);
+	struct Mat4 Mat4::Scale(const Vec3& scale) {
+		Mat4 result(1.0f);
 
 		result.elements[0 + 0 * 4] = scale.x;
 		result.elements[1 + 1 * 4] = scale.y;
@@ -279,8 +280,8 @@ namespace ph { namespace math {
 	}
 
 
-	mat4 mat4::rotate(float angle, const vec3& axis) {
-		mat4 result(1.0f);
+	Mat4 Mat4::Rotate(float angle, const Vec3& axis) {
+		Mat4 result(1.0f);
 
 		float r = toRadians(angle);
 		float c = cos(r);
@@ -306,9 +307,9 @@ namespace ph { namespace math {
 		return result;
 	}
 
-	mat4 mat4::invert(const mat4& matrix) {
-		mat4 result = matrix;
-		return result.invert();
+	Mat4 Mat4::Invert(const Mat4& matrix) {
+		Mat4 result = matrix;
+		return result.Invert();
 	}
 
 }}

@@ -4,43 +4,43 @@
 
 namespace ph { namespace math {
 
-	struct vec3 {
+	struct Vec3 {
 		float x, y, z;
 
-		vec3();
-		vec3(const float& x, const float& y, const float& z);
+		Vec3();
+		Vec3(const float& x, const float& y, const float& z);
 
-		vec3& add(const vec3& other);
-		vec3& subtract(const vec3& other);
-		vec3& multiply(const vec3& other);
-		vec3& divide(const vec3& other);
+		Vec3& add(const Vec3& other);
+		Vec3& subtract(const Vec3& other);
+		Vec3& multiply(const Vec3& other);
+		Vec3& divide(const Vec3& other);
 
-		friend vec3 operator+(vec3 left, const vec3& right);
-		friend vec3 operator-(vec3 left, const vec3& right);
-		friend vec3 operator*(vec3 left, const vec3& right);
-		friend vec3 operator/(vec3 left, const vec3& right);
+		friend Vec3 operator+(Vec3 left, const Vec3& right);
+		friend Vec3 operator-(Vec3 left, const Vec3& right);
+		friend Vec3 operator*(Vec3 left, const Vec3& right);
+		friend Vec3 operator/(Vec3 left, const Vec3& right);
 
-		friend vec3 operator+(vec3 left, float value);
-		friend vec3 operator-(vec3 left, float value);
-		friend vec3 operator*(vec3 left, float value);
-		friend vec3 operator/(vec3 left, float value);
+		friend Vec3 operator+(Vec3 left, float value);
+		friend Vec3 operator-(Vec3 left, float value);
+		friend Vec3 operator*(Vec3 left, float value);
+		friend Vec3 operator/(Vec3 left, float value);
 
-		vec3& operator+=(const vec3& other);
-		vec3& operator-=(const vec3& other);
-		vec3& operator*=(const vec3& other);
-		vec3& operator/=(const vec3& other);
+		Vec3& operator+=(const Vec3& other);
+		Vec3& operator-=(const Vec3& other);
+		Vec3& operator*=(const Vec3& other);
+		Vec3& operator/=(const Vec3& other);
 
-		bool operator==(const vec3& other) const;
-		bool operator!=(const vec3& other) const;
+		bool operator==(const Vec3& other) const;
+		bool operator!=(const Vec3& other) const;
 
 		float magnitude() const;
-		vec3 normalize() const;
-		float distance(const vec3& other) const;
+		Vec3 normalize() const;
+		float distance(const Vec3& other) const;
 
-		vec3 cross(const vec3& other) const;
-		float dot(const vec3& other) const;
+		Vec3 cross(const Vec3& other) const;
+		float dot(const Vec3& other) const;
 
-		friend std::ostream& operator<<(std::ostream& stream, const vec3& other);
+		friend std::ostream& operator<<(std::ostream& stream, const Vec3& other);
 	};
 	
 }}

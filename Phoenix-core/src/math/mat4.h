@@ -4,39 +4,39 @@
 
 namespace ph { namespace math {
 
-	struct mat4 {
+	struct Mat4 {
 		union {
 			float elements[4 * 4];
-			vec4 column[4];
+			Vec4 column[4];
 		};
 
-		mat4();
-		mat4(float diagonal);
-		mat4(float* elements);
-		mat4(const vec4& col0, const vec4& col1, const vec4& col2, const vec4& col3);
+		Mat4();
+		Mat4(float diagonal);
+		Mat4(float* elements);
+		Mat4(const Vec4& col0, const Vec4& col1, const Vec4& col2, const Vec4& col3);
 
-		mat4& multiply(const mat4& other);
-		friend mat4 operator*(mat4 left, const mat4& right);
-		mat4& operator*=(const mat4& other);
+		Mat4& multiply(const Mat4& other);
+		friend Mat4 operator*(Mat4 left, const Mat4& right);
+		Mat4& operator*=(const Mat4& other);
 
-		vec3 multiply(const vec3& other) const;
-		friend vec3 operator*(const mat4& left, const vec3& right);
+		Vec3 multiply(const Vec3& other) const;
+		friend Vec3 operator*(const Mat4& left, const Vec3& right);
 
-		vec4 multiply(const vec4& other) const;
-		friend vec4 operator*(const mat4& left, const vec4& right);
+		Vec4 multiply(const Vec4& other) const;
+		friend Vec4 operator*(const Mat4& left, const Vec4& right);
 
-		mat4& invert();
+		Mat4& Invert();
 
-		static mat4 identity();
+		static Mat4 Identity();
 
-		static mat4 orthographic(float left, float right, float bottom, float top, float near, float far);
-		static mat4 perspective(float fov, float aspectRatio, float near, float far);
-		static mat4 lookAt(const vec3& camera, const vec3& object, const vec3& up);
+		static Mat4 Orthographic(float left, float right, float bottom, float top, float near, float far);
+		static Mat4 Perspective(float fov, float aspectRatio, float near, float far);
+		static Mat4 LookAt(const Vec3& camera, const Vec3& object, const Vec3& up);
 
-		static mat4 translate(const vec3& translation);
-		static mat4 scale(const vec3& scale);
-		static mat4 rotate(float angle, const vec3& axis);
-		static mat4 invert(const mat4& matrix);
+		static Mat4 Translate(const Vec3& translation);
+		static Mat4 Scale(const Vec3& scale);
+		static Mat4 Rotate(float angle, const Vec3& axis);
+		static Mat4 Invert(const Mat4& matrix);
 	};
 
 }}
