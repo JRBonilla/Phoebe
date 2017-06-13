@@ -4,7 +4,7 @@
 #include <Windows.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "../math/PhoenixMath.h"
+#include "../math/Math.h"
 #include "../audio/SoundManager.h"
 #include "../input/InputManager.h"
 #include "../graphics/fonts/FontManager.h"

@@ -6,7 +6,7 @@ namespace ph {
 		FREE_IMAGE_FORMAT format = FreeImage_GetFileType(filename, 0);
 
 		if (format == -1) {
-			PHOENIX_LOG("Could not load image file " << filename << "!");
+			PHOENIX_INFO("Could not load image file " << filename << "!");
 		}
 
 		if (format == FIF_UNKNOWN) {
@@ -14,12 +14,12 @@ namespace ph {
 		}
 
 		if (format == FIF_UNKNOWN) {
-			PHOENIX_LOG("Could not determine image file format for " << filename << "!");
+			PHOENIX_INFO("Could not determine image file format for " << filename << "!");
 			return nullptr;
 		}
 
 		if (!FreeImage_FIFSupportsReading(format)) {
-			PHOENIX_LOG("Detected image format for " << filename << " could not be read!");
+			PHOENIX_INFO("Detected image format for " << filename << " could not be read!");
 			return nullptr;
 		}
 

@@ -6,7 +6,7 @@
 #include <string>
 #include <glad/glad.h>
 #include "../../utilities/FileManager.h"
-#include "../../math/PhoenixMath.h"
+#include "../../math/Math.h"
 
 #define FAILURE 0
 #define SUCCESS 1

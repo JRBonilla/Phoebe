@@ -37,7 +37,7 @@ namespace ph {
 
 	bool Window::Init() {
 		if (!glfwInit()) {
-			PHOENIX_LOG("Failed to initialize GLFW!");
+			PHOENIX_INFO("Failed to initialize GLFW!");
 			return false;
 		}
 
@@ -55,7 +55,7 @@ namespace ph {
 		
 		m_Window = glfwCreateWindow(m_Properties.width, m_Properties.height, m_Title, m_Properties.fullscreen ? glfwGetPrimaryMonitor() : nullptr, nullptr);
 		if (m_Window == nullptr) {
-			PHOENIX_LOG("Failed to initialize GLFW window!");
+			PHOENIX_INFO("Failed to initialize GLFW window!");
 			return false;
 		}
 		glfwSetWindowIcon(m_Window, 1, &icon);
@@ -68,7 +68,7 @@ namespace ph {
 		glfwSetWindowSizeCallback(m_Window, ResizeCallback);
 
 		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-			PHOENIX_LOG("Failed to initialize OpenGL!");
+			PHOENIX_INFO("Failed to initialize OpenGL!");
 			return false;
 		}
 
@@ -83,10 +83,14 @@ namespace ph {
 	}
 
 	void Window::PrintOpenGLVersion() {
+#ifdef _WIN32
 		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 		SetConsoleTextAttribute(hConsole, 13);
+#endif
 		std::cout << glGetString(GL_RENDERER) << ", OpenGL " << glGetString(GL_VERSION) << std::endl;
+#ifdef _WIN32
 		SetConsoleTextAttribute(hConsole, 15);
+#endif
 	}
 
 	void Window::CenterWindowOnScreen()	{

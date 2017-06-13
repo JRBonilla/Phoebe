@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../math/PhoenixMath.h"
+#include "../../math/Math.h"
 #include "../Renderer.h"
 #include "../Texture.h"
 

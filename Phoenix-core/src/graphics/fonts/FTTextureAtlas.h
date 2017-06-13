@@ -49,7 +49,7 @@ namespace ph { namespace graphics {
 			// Set the width and height of the atlas based on the width & height of each character
 			for (int i = 32; i < 128; i++) {
 				if (FT_Load_Char(face, i, FT_LOAD_RENDER)) {
-					PHOENIX_LOG("Loading character " << i << " failed!");
+					PHOENIX_INFO("Loading character " << i << " failed!");
 					continue;
 				}
 
@@ -78,7 +78,7 @@ namespace ph { namespace graphics {
 			// Create the texture atlas
 			for (int i = 32; i < 128; i++) {
 				if (FT_Load_Char(face, i, FT_LOAD_RENDER)) {
-					PHOENIX_LOG("Loading character " << i << " failed!");
+					PHOENIX_INFO("Loading character " << i << " failed!");
 					continue;
 				}
 
@@ -106,7 +106,7 @@ namespace ph { namespace graphics {
 				row_height	= std::max<int>(row_height, glyph->bitmap.rows);
 			}
 			FT_Done_Face(face);
-			PHOENIX_LOG("Generated a " << width << " x " << height << " (" << width * height / 1024 << "kb) texture atlas.");
+			PHOENIX_INFO("Generated a " << width << " x " << height << " (" << width * height / 1024 << "kb) texture atlas.");
 		}
 
 		~FTTextureAtlas() {

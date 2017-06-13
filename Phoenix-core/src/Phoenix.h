@@ -35,7 +35,7 @@
 #include "layers/Layer.h"
 #include "layers/Group.h"
 
-#include "math/PhoenixMath.h"
+#include "math/Math.h"
 
 #include "utilities/Log.h"
 #include "utilities/Timer.h"

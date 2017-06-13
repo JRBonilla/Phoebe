@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PhoenixMath.h"
+#include "Math.h"
 
 namespace ph { namespace math {
 

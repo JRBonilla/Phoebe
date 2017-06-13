@@ -26,7 +26,6 @@ namespace ph { namespace math {
 		column[3] = col3;
 	}
 
-
 	Mat4 Mat4::Identity() {
 		return Mat4(1.0f);
 	}
@@ -64,6 +63,19 @@ namespace ph { namespace math {
 	}
 
 	Vec3 operator*(const Mat4& left, const Vec3& right) {
+		return left.multiply(right);
+	}
+
+	Vec4 Mat4::multiply(const Vec4& other) const {
+		return Vec4 (
+			(column[0].x * other.x) + (column[1].x * other.y) + (column[2].x * other.z) + (column[3].x * other.w),
+			(column[0].y * other.x) + (column[1].y * other.y) + (column[2].y * other.z) + (column[3].y * other.w),
+			(column[0].z * other.x) + (column[1].z * other.y) + (column[2].z * other.z) + (column[3].z * other.w),
+			(column[0].w * other.x) + (column[1].w * other.y) + (column[2].w * other.z) + (column[3].w * other.w)
+		);
+	}
+
+	Vec4 operator*(const Mat4& left, const Vec4& right) {
 		return left.multiply(right);
 	}
 
@@ -192,19 +204,6 @@ namespace ph { namespace math {
 		return *this;
 	}
 
-	Vec4 Mat4::multiply(const Vec4& other) const {
-		return Vec4 (
-			(column[0].x * other.x) + (column[1].x * other.y) + (column[2].x * other.z) + (column[3].x * other.w),
-			(column[0].y * other.x) + (column[1].y * other.y) + (column[2].y * other.z) + (column[3].y * other.w),
-			(column[0].z * other.x) + (column[1].z * other.y) + (column[2].z * other.z) + (column[3].z * other.w),
-			(column[0].w * other.x) + (column[1].w * other.y) + (column[2].w * other.z) + (column[3].w * other.w)
-		);
-	}
-
-	Vec4 operator*(const Mat4& left, const Vec4& right) {
-		return left.multiply(right);
-	}
-
 	Mat4 Mat4::Orthographic(float left, float right, float bottom, float top, float near, float far) {
 		Mat4 result(1.0f);
 
@@ -214,7 +213,7 @@ namespace ph { namespace math {
 
 		result.elements[0 + 3 * 4] = (left + right) / (left - right);
 		result.elements[1 + 3 * 4] = (bottom + top) / (bottom - top);
-		result.elements[2 + 3 * 4] = (far + near) / (far - near);
+		result.elements[2 + 3 * 4] = (far + near) / (near - far);
 
 		return result;
 	}
@@ -278,8 +277,7 @@ namespace ph { namespace math {
 
 		return result;
 	}
-
-
+	
 	Mat4 Mat4::Rotate(float angle, const Vec3& axis) {
 		Mat4 result(1.0f);
 

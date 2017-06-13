@@ -78,9 +78,6 @@
     <ClCompile Include="src\graphics\buffers\Framebuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\graphics\particle\Particle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\utilities\FileManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -90,22 +87,16 @@
     <ClCompile Include="src\utilities\Timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\scene\Scene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\math\Rectangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\math\vec2.cpp">
+    <ClCompile Include="src\math\Vec2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\math\vec3.cpp">
+    <ClCompile Include="src\math\Vec3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\math\vec4.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\system\Memory.cpp">
+    <ClCompile Include="src\math\Vec4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics\renderables\Label.cpp">
@@ -123,7 +114,7 @@
     <ClCompile Include="src\debug\DebugInfoLayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\math\mat4.cpp">
+    <ClCompile Include="src\math\Mat4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -191,9 +182,6 @@
     <ClInclude Include="src\graphics\buffers\Framebuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\graphics\particle\Particle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\utilities\FileManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -209,25 +197,19 @@
     <ClInclude Include="src\graphics\fonts\FTTextureAtlas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\scene\Scene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\math\Rectangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\math\vec2.h">
+    <ClInclude Include="src\math\Vec2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\math\vec3.h">
+    <ClInclude Include="src\math\Vec3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\math\vec4.h">
+    <ClInclude Include="src\math\Vec4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\common\Types.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\system\Memory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\graphics\renderables\Label.h">
@@ -245,22 +227,16 @@
     <ClInclude Include="src\common\Common.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\math\PhoenixMath.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\debug\DebugInfoLayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\math\mat4.h">
+    <ClInclude Include="src\math\Mat4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\math\MathUtils.h">
+    <ClInclude Include="src\math\Functions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\entity\Entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\entity\Component.h">
+    <ClInclude Include="src\math\Math.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

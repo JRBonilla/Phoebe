@@ -23,7 +23,7 @@ namespace ph { namespace graphics {
 			uint bits;
 			pixels = Image::Load(m_FilePath.c_str(), &m_Width, &m_Height, &bits, !m_LoadOptions.FlipVertical);
 			if (bits != 24 && bits != 32) {
-				PHOENIX_LOG("Unsupported image bit-depth! (" << bits << ")");
+				PHOENIX_INFO("Unsupported image bit-depth! (" << bits << ")");
 			}
 			m_Parameters.format = (bits == 24 ? TextureFormat::RGB : TextureFormat::RGBA);
 		}

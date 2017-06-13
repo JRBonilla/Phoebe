@@ -1,1 +1,23 @@
-﻿  Phoenix-core.vcxproj -> C:\Users\TheRe\Documents\Visual Studio 2015\Projects\Phoenix\bin\Debug\Phoenix-core.lib
+﻿  Application.cpp
+  Generating Code...
+  Compiling...
+  Image.cpp
+  FileManager.cpp
+  Layer.cpp
+  Group.cpp
+  ShaderManager.cpp
+  Shader.cpp
+  Sprite.cpp
+  Renderable.cpp
+  Label.cpp
+  FontManager.cpp
+  Font.cpp
+  Framebuffer.cpp
+  Texture.cpp
+  Renderer.cpp
+  DebugInfoLayer.cpp
+  SoundManager.cpp
+  Sound.cpp
+  Window.cpp
+  Generating Code...
+  Phoenix-core.vcxproj -> C:\Users\TheRe\Documents\Visual Studio 2017\Projects\Phoenix-Engine\bin\Debug\Phoenix-core.lib

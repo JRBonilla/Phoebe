@@ -1,10 +1,9 @@
 ﻿  Sandbox.cpp
 glad.lib(glad.obj) : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:ICF' specification
-     Creating library C:\Users\TheRe\Documents\Visual Studio 2015\Projects\Phoenix\bin\Release\Sandbox.lib and object C:\Users\TheRe\Documents\Visual Studio 2015\Projects\Phoenix\bin\Release\Sandbox.exp
+     Creating library C:\Users\TheRe\Documents\Visual Studio 2017\Projects\Phoenix-Engine\bin\Release\Sandbox.lib and object C:\Users\TheRe\Documents\Visual Studio 2017\Projects\Phoenix-Engine\bin\Release\Sandbox.exp
   Generating code
-  841 of 1307 functions (64.3%) were compiled, the rest were copied from previous compilation.
-    151 functions were new in current compilation
-    60 functions had inline decision re-evaluated but remain unchanged
+  1281 of 1281 functions (100.0%) were compiled, the rest were copied from previous compilation.
+    199 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  Sandbox.vcxproj -> C:\Users\TheRe\Documents\Visual Studio 2015\Projects\Phoenix\bin\Release\Sandbox.exe
-  Sandbox.vcxproj -> C:\Users\TheRe\Documents\Visual Studio 2015\Projects\Phoenix\bin\Release\Sandbox.pdb (Full PDB)
+  Sandbox.vcxproj -> C:\Users\TheRe\Documents\Visual Studio 2017\Projects\Phoenix-Engine\bin\Release\Sandbox.exe

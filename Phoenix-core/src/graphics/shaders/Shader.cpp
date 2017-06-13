@@ -17,18 +17,18 @@ namespace ph { namespace graphics {
 		GLuint fragment = glCreateShader(GL_FRAGMENT_SHADER);
 
 		if (Compile(vertex, m_VertexPath) == FAILURE) {
-			PHOENIX_LOG("Failed to Compile vertex shader!");
+			PHOENIX_INFO("Failed to Compile vertex shader!");
 			return FAILURE;
 		}
 
 		if (Compile(fragment, m_FragmentPath) == FAILURE) {
-			PHOENIX_LOG("Failed to Compile fragment shader!");
+			PHOENIX_INFO("Failed to Compile fragment shader!");
 			return FAILURE;
 		}
 
 		GLuint program = glCreateProgram();
 		if (Link(program, vertex, fragment) == FAILURE) {
-			PHOENIX_LOG("Failed to create program!");
+			PHOENIX_INFO("Failed to create program!");
 			return FAILURE;
 		}
 		glValidateProgram(program);
@@ -46,7 +46,7 @@ namespace ph { namespace graphics {
 		// Get the shader source code
 		std::string source = FileManager::ReadFile(path);
 		if (source.empty()) {
-			PHOENIX_LOG("Error: " << path << "is empty!");
+			PHOENIX_INFO("Error: " << path << "is empty!");
 			return FAILURE;
 		}
 		const char* shaderCode = source.c_str();
@@ -63,7 +63,7 @@ namespace ph { namespace graphics {
 			std::vector<char> error(length);
 			glGetShaderInfoLog(id, length, &length, &error[0]);
 
-			PHOENIX_LOG("Failed to Compile shader: " << path);
+			PHOENIX_INFO("Failed to Compile shader: " << path);
 			std::cout << &error[0] << std::endl;
 			return FAILURE;
 		}
@@ -84,7 +84,7 @@ namespace ph { namespace graphics {
 			std::vector<char> error(length);
 			glGetProgramInfoLog(program, length, &length, &error[0]);
 
-			PHOENIX_LOG("Failed to Link shaders to program!");
+			PHOENIX_INFO("Failed to Link shaders to program!");
 			std::cout << &error[0] << std::endl;
 			glDeleteProgram(program);
 			return FAILURE;

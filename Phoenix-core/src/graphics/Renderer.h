@@ -4,7 +4,7 @@
 #include <glad/glad.h>
 #include "Texture.h"
 #include "fonts/Font.h"
-#include "../math/PhoenixMath.h"
+#include "../math/Math.h"
 #include "Buffers/IndexBuffer.h"
 #include "Buffers/VertexArray.h"
 #include "shaders/Shader.h"

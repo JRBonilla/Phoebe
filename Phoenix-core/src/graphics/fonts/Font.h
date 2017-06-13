@@ -2,7 +2,7 @@
 
 #include "FTTextureAtlas.h"
 #include "../Texture.h"
-#include "../../math/PhoenixMath.h"
+#include "../../math/Math.h"
 
 namespace ph { namespace graphics {
 
