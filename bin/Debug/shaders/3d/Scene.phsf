@@ -1,0 +1,60 @@
+#shader vertex
+#version 330 core
+
+layout (location = 0) in vec4 position;
+layout (location = 1) in vec3 normal;
+layout (location = 2) in vec2 uv;
+
+uniform mat4 sys_ProjectionMatrix;
+uniform mat4 sys_ViewMatrix = mat4(1.0);
+uniform mat4 sys_ModelMatrix = mat4(1.0);
+
+out DATA
+{
+	vec4 position;
+	vec3 normal;
+	vec2 uv;
+	vec3 color;
+} vs_out;
+
+void main()
+{
+	gl_Position = sys_ProjectionMatrix * sys_ViewMatrix * sys_ModelMatrix * position;
+	vs_out.position = sys_ModelMatrix * position;
+	vs_out.normal = mat3(sys_ModelMatrix) * normal;
+	vs_out.uv = uv;
+	vs_out.color = vec3(normal * 0.5f + 0.5f);
+}
+
+#shader fragment
+#version 330 core
+#include "Lighting.phsf"
+
+layout (location = 0) out vec4 color;
+
+in DATA
+{
+	vec4 position;
+	vec3 normal;
+	vec2 uv;
+	vec3 color;
+} fs_in;
+
+uniform float u_Glossiness = 1.0f;
+uniform vec3 sys_CameraPosition;
+
+uniform DirectionalLight dirLight;
+uniform PointLight pointLight;
+//uniform SpotLight spotLight;
+
+void main()
+{
+    vec3 norm = normalize(fs_in.normal);
+	vec3 camera_dir = normalize(sys_CameraPosition - fs_in.position.xyz);
+	vec3 result = vec3(0.0);
+	result += CalcDirLight  (dirLight,   norm, camera_dir, u_Glossiness)                     * fs_in.color.xyz;
+	result += CalcPointLight(pointLight, norm, camera_dir, fs_in.position.xyz, u_Glossiness) * fs_in.color.xyz;
+	//result += CalcSpotLight (spotLight,  norm, camera_dir, fs_in.position.xyz, u_Glossiness) * fs_in.color.xyz;
+
+	color = vec4(result, 1.0f);
+}

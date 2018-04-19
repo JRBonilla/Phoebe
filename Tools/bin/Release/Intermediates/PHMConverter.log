@@ -1,0 +1,8 @@
+﻿  Main.cpp
+  PHMWriter.cpp
+  Generating code
+  532 of 541 functions (98.3%) were compiled, the rest were copied from previous compilation.
+    6 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  PHMConverter.vcxproj -> C:\dev\Phoebe\Tools\bin\Release\PHMConverter.exe

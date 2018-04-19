@@ -1,0 +1,101 @@
+struct DirectionalLight
+{
+	vec3 direction;
+	vec4 color;
+};
+
+struct PointLight
+{
+	vec3 position;
+	vec4 color;
+	float intensity;
+};
+
+struct SpotLight
+{
+	vec3 position;
+	vec3 direction;
+	vec4 color;
+	float cutOff;
+	float outerCutOff;
+	float intensity;
+};
+
+vec3 CalcDirLight(DirectionalLight light, vec3 normal, vec3 camera_dir, float glossiness)
+{
+	vec3 light_dir = normalize(-light.direction);
+
+	// diffuse shading
+	float diff = max(dot(normal, light_dir), 0.0);
+
+	// specular shading
+	vec3 halfway_dir = normalize(light_dir + camera_dir);
+	float spec = pow(max(dot(normal, halfway_dir), 0.0), glossiness);
+
+	float ambient_strength = 0.05;
+	float specular_strength = 0.3f;
+
+	// Combine results
+	vec3 ambient = ambient_strength * light.color.xyz;
+	vec3 diffuse = diff * light.color.xyz;
+	vec3 specular = specular_strength * spec * light.color.xyz;
+
+	return (ambient + diffuse + specular);
+}
+
+vec3 CalcPointLight(PointLight light, vec3 normal, vec3 camera_dir, vec3 worldPosition, float glossiness)
+{
+	vec3 light_dir = normalize(light.position - worldPosition);
+
+	// diffuse shading
+	float diff = max(dot(normal, light_dir), 0.0);
+
+	// specular shading
+	vec3 halfway_dir = normalize(light_dir + camera_dir);
+	float spec = pow(max(dot(normal, halfway_dir), 0.0), glossiness);
+
+	// attenuation
+	float distance = length(light.position - worldPosition);
+	float attenuation = light.intensity * (1.0 / (1.0 + 1.0 * (distance * distance)));
+
+	float ambient_strength = 0.05;
+	float specular_strength = 0.3f;
+
+	// combine results
+	vec3 ambient  = ambient_strength * light.color.xyz;
+	vec3 diffuse  = diff * light.color.xyz;
+	vec3 specular = specular_strength * spec * light.color.xyz;
+
+	return (ambient + diffuse + specular) * attenuation;
+}
+
+vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 camera_dir, vec3 worldPosition, float glossiness)
+{
+	vec3 light_dir = normalize(light.position - worldPosition);
+
+	// diffuse shading
+	float diff = max(dot(normal, light_dir), 0.0);
+
+	// specular shading
+	vec3 halfway_dir = normalize(light_dir + camera_dir);
+	float spec = pow(max(dot(normal, halfway_dir), 0.0), glossiness);
+
+	// attenuation
+	float distance = length(light.position - worldPosition);
+	float attenuation = light.intensity * (1.0 / (1.0 + 1.0 * (distance * distance)));
+
+	// spotlight intensity
+	float theta = dot(light_dir, normalize(-light.direction));
+	float epsilon = light.cutOff - light.outerCutOff;
+	float intensity = clamp((theta - light.outerCutOff) / epsilon, 0.0, 1.0);
+
+	float ambient_strength = 0.05;
+	float specular_strength = 0.3f;
+
+	// combine results
+	vec3 ambient = ambient_strength * light.color.xyz;
+	vec3 diffuse = diff * light.color.xyz;
+	vec3 specular = specular_strength * spec * light.color.xyz;
+
+	return (ambient + diffuse + specular) * (attenuation * intensity);
+}
