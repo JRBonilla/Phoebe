@@ -15,34 +15,36 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\default\default.frag" />
-    <None Include="res\shaders\default\default.vert" />
-    <None Include="res\shaders\default\text.frag" />
+    <None Include="shaders\skybox\Skybox.phsf" />
+    <None Include="shaders\3d\Scene.phsf" />
+    <None Include="shaders\3d\Lamp.phsf" />
+    <None Include="shaders\default\Font.phsf" />
+    <None Include="shaders\default\Basic2D.phsf" />
+    <None Include="shaders\3d\Lighting.phsf" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="res\Roboto-Medium.ttf" />
-    <Font Include="res\Roboto-Regular.ttf" />
-    <Font Include="res\SourceSansPro-Light.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="res\test.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\test2.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\icon.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="res\test.wav">
-      <Filter>Resource Files</Filter>
-    </Media>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Sandbox.cpp">
+    <ClCompile Include="src\Sandbox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Test2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Test3D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="res\Cube.obj">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Test2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Test3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\3d\Material.phsf">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

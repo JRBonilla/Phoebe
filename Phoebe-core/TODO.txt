@@ -1,0 +1,22 @@
+###########################################################
+	            PHOEBE ENGINE - TODO LIST
+###########################################################
+
+1.  Add DirectX support for Windows
+2.  Sprite sheets
+3.  Entity API
+4.  Editor
+5.  C++/CLI bridge
+6.  Fix problem with text shader where the format is ABGR instead of RGBA
+7.  Optimize 2D renderer
+8.  SIMD instructions or use GLM
+9.  Cleanup API
+	a. Layer API
+10. Begin memory allocation API
+11. File system API
+12. Improve Logging API
+13. Particle engine
+14. Optimize managers
+15. 2D physics
+	a. AABB's
+	b. Implement Box2D

@@ -69,13 +69,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)Dependencies\FreeImage\include\;$(SolutionDir)Dependencies\Box2D\include\;$(SolutionDir)Dependencies\FreeType\include\;$(SolutionDir)Dependencies\GorillaAudio\include\;$(SolutionDir)Dependencies\glad\include\;$(SolutionDir)Dependencies\GLFW\include\;$(SolutionDir)Phoenix-core\src;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Dependencies\FreeImage\include\;$(SolutionDir)Dependencies\Box2D\include\;$(SolutionDir)Dependencies\FreeType\include\;$(SolutionDir)Dependencies\GorillaAudio\include\;$(SolutionDir)Dependencies\glad\include\;$(SolutionDir)Dependencies\GLFW\include\;$(SolutionDir)Phoebe-core\src;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\FreeImage\lib\;$(SolutionDir)Dependencies\Box2D\lib\;$(SolutionDir)Dependencies\GorillaAudio\lib\;$(SolutionDir)Dependencies\FreeType\lib\;$(SolutionDir)Dependencies\glad\lib;$(SolutionDir)Dependencies\GLFW\lib;$(SolutionDir)bin\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin\$(Configuration)\Intermediates\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(SolutionDir)Dependencies\FreeImage\include\;$(SolutionDir)Dependencies\Box2D\include\;$(SolutionDir)Dependencies\FreeType\include\;$(SolutionDir)Dependencies\GorillaAudio\include\;$(SolutionDir)Dependencies\glad\include\;$(SolutionDir)Dependencies\GLFW\include\;$(SolutionDir)Phoenix-core\src;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Dependencies\FreeImage\include\;$(SolutionDir)Dependencies\Box2D\include\;$(SolutionDir)Dependencies\FreeType\include\;$(SolutionDir)Dependencies\GorillaAudio\include\;$(SolutionDir)Dependencies\glad\include\;$(SolutionDir)Dependencies\GLFW\include\;$(SolutionDir)Phoebe-core\src;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\FreeImage\lib\;$(SolutionDir)Dependencies\Box2D\lib\;$(SolutionDir)Dependencies\GorillaAudio\lib\;$(SolutionDir)Dependencies\FreeType\lib\;$(SolutionDir)Dependencies\glad\lib;$(SolutionDir)Dependencies\GLFW\lib;$(SolutionDir)bin\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin\$(Configuration)\Intermediates\$(ProjectName)\</IntDir>
@@ -88,7 +88,7 @@
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS; _MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>glfw3.lib;glad.lib;opengl32.lib;freetype271MT.lib;FreeImage.lib;legacy_stdio_definitions.lib;gorilla.lib;Box2D.lib;Phoenix-core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;glad.lib;opengl32.lib;freetype271MT.lib;FreeImage.lib;legacy_stdio_definitions.lib;gorilla.lib;Phoebe-core.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>LIBCMT;MSVCRT;</IgnoreSpecificDefaultLibraries>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -116,7 +116,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>glfw3.lib;glad.lib;opengl32.lib;freetype271MT.lib;FreeImage.lib;legacy_stdio_definitions.lib;gorilla.lib;Box2D.lib;Phoenix-core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;glad.lib;opengl32.lib;freetype271MT.lib;FreeImage.lib;legacy_stdio_definitions.lib;gorilla.lib;Phoebe-core.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>LIBCMT;MSVCRTD;</IgnoreSpecificDefaultLibraries>
       <SubSystem>Console</SubSystem>
       <AdditionalOptions>/ENTRY:"mainCRTStartup" %(AdditionalOptions)</AdditionalOptions>
@@ -136,30 +136,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Sandbox.cpp" />
+    <ClCompile Include="src\Sandbox.cpp" />
+    <ClCompile Include="src\Test2D.cpp" />
+    <ClCompile Include="src\Test3D.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\default\default.frag" />
-    <None Include="res\shaders\default\default.vert" />
-    <None Include="res\shaders\default\text.frag" />
+    <None Include="shaders\3d\Lamp.phsf" />
+    <None Include="shaders\3d\Lighting.phsf" />
+    <None Include="shaders\3d\Scene.phsf" />
+    <None Include="shaders\default\Basic2D.phsf" />
+    <None Include="shaders\default\Font.phsf" />
+    <None Include="shaders\skybox\Skybox.phsf" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="res\Roboto-Medium.ttf" />
-    <Font Include="res\Roboto-Regular.ttf" />
-    <Font Include="res\SourceSansPro-Light.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="res\icon.png" />
-    <Image Include="res\test.png" />
-    <Image Include="res\test2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="res\test.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Phoenix-core\Phoenix-core.vcxproj">
+    <ProjectReference Include="..\Phoebe-core\Phoebe-core.vcxproj">
       <Project>{bea515ae-891b-4533-94b5-d44e0dd029c4}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="res\Cube.obj" />
+    <ClInclude Include="shaders\3d\Material.phsf" />
+    <ClInclude Include="src\Test2D.h" />
+    <ClInclude Include="src\Test3D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
