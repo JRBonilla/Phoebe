@@ -13,9 +13,9 @@
 namespace ph { namespace renderer {
 
 #define SHADER_VERTEX_INDEX  0
-#define SHADER_UV_INDEX		 1
-#define SHADER_TID_INDEX	 2
-#define SHADER_COLOR_INDEX	 3
+#define SHADER_UV_INDEX      1
+#define SHADER_TID_INDEX     2
+#define SHADER_COLOR_INDEX   3
 
 #define SHADER_UNIFORM_PROJECTION_MATRIX_NAME  "sys_ProjectionMatrix"
 #define SHADER_UNIFORM_VIEW_MATRIX_NAME	       "sys_ViewMatrix"

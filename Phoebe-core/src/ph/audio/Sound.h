@@ -14,8 +14,8 @@ namespace ph{ namespace audio {
 		static bool   m_IsPlaying;
 		std::string   m_Name;
 		std::string   m_Filename;
-		ga_Sound*	  m_Sound;
-		ga_Handle*	  m_Handle;
+		ga_Sound*     m_Sound;
+		ga_Handle*    m_Handle;
 	public:
 		Sound(const std::string& name, const std::string& filename);
 		~Sound();

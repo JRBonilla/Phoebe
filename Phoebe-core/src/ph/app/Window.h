@@ -5,8 +5,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "InputManager.h"
-#include "ph/math/Math.h"
 #include "ph/audio/SoundManager.h"
+#include "ph/math/Math.h"
 #include "ph/renderer/RenderSystem.h"
 #include "ph/renderer/fonts/FontManager.h"
 #include "ph/renderer/shaders/ShaderManager.h"
@@ -23,10 +23,10 @@ namespace ph {
 	class Window {
 	private:
 		WindowProperties  m_Properties;
-		GLFWwindow*		  m_Window;
-		int				  m_WindowX, m_WindowY;
-		int				  m_ViewPortWidth, m_ViewPortHeight;
-		const char*		  m_Title;
+		GLFWwindow*       m_Window;
+		int               m_WindowX, m_WindowY;
+		int               m_ViewPortWidth, m_ViewPortHeight;
+		const char*       m_Title;
 		bool              m_MouseWasGrabbed;
 	public:
 		Window(const char* title, const WindowProperties& properties);

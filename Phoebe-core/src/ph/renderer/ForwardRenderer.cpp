@@ -103,19 +103,17 @@ namespace ph { namespace renderer {
 
 	void ForwardRenderer::SubmitLightSetup(const LightSetup& lightSetup) {
 		for (uint i = 0; i < lightSetup.GetLights().size(); i++) {
-			Light* currentLight = lightSetup.GetLights()[i];
-
-			if (currentLight->GetType() == Light::Type::DIRECTIONAL_LIGHT) {
-				DirectionalLight* light = (DirectionalLight*)currentLight;
-				PushDirectionalLight(light);
-			}
-			else if (currentLight->GetType() == Light::Type::POINT_LIGHT) {
-				PointLight* light = (PointLight*)currentLight;
-				PushPointLight(light);
-			}
-			else if (currentLight->GetType() == Light::Type::SPOT_LIGHT) {
-				SpotLight* light = (SpotLight*)currentLight;
-				PushSpotLight(light);
+			Light* light = lightSetup.GetLights()[i];
+			switch (light->GetType()) {
+			case Light::Type::DIRECTIONAL_LIGHT:
+				PushDirectionalLight((DirectionalLight*)light);
+				break;
+			case Light::Type::POINT_LIGHT:
+				PushPointLight((PointLight*)light);
+				break;
+			case Light::Type::SPOT_LIGHT:
+				PushSpotLight((SpotLight*)light);
+				break;
 			}
 		}
 	}

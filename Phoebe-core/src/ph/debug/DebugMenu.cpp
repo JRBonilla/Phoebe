@@ -75,6 +75,26 @@ namespace ph { namespace debug {
 		m_MenuItems.push_back(new Checkbox(label, var));
 	}
 
+	void DebugMenu::DrawSlider(FloatSlider* slider) {
+		ImGui::SliderFloat(slider->m_Label.c_str(), slider->m_Var, slider->m_Min, slider->m_Max);
+	}
+	
+	void DebugMenu::DrawSlider(IntSlider* slider) {
+		ImGui::SliderInt(slider->m_Label.c_str(), slider->m_Var, slider->m_Min, slider->m_Max);
+	}
+
+	void DebugMenu::DrawDrag(FloatDrag* drag) {
+		ImGui::DragFloat(drag->m_Label.c_str(), drag->m_Var, drag->m_Speed, drag->m_Min, drag->m_Max);
+	}
+	
+	void DebugMenu::DrawDrag(IntDrag* drag) {
+		ImGui::DragInt(drag->m_Label.c_str(), drag->m_Var, drag->m_Speed, drag->m_Min, drag->m_Max);
+	}
+	
+	void DebugMenu::DrawCheckbox(Checkbox* checkbox) {
+		ImGui::Checkbox(checkbox->m_Label.c_str(), checkbox->m_Var);
+	}
+
 	void DebugMenu::Update() {
 		// Change visibility if CTRL+D is typed
 		if (InputManager::IsKeyPressed(GLFW_KEY_LEFT_CONTROL) && InputManager::IsKeyTyped(GLFW_KEY_D)) {
@@ -101,25 +121,22 @@ namespace ph { namespace debug {
 
 				for (uint i = 0; i < m_MenuItems.size(); i++) {
 					MenuItem* item = m_MenuItems[i];
-					if (item->m_Type == MenuItem::Type::FLOAT_SLIDER) {
-						FloatSlider* slider = (FloatSlider*)item;
-						ImGui::SliderFloat(slider->m_Label.c_str(), slider->m_Var, slider->m_Min, slider->m_Max);
-					}
-					else if (item->m_Type == MenuItem::Type::INT_SLIDER) {
-						IntSlider* slider = (IntSlider*)item;
-						ImGui::SliderInt(slider->m_Label.c_str(), slider->m_Var, slider->m_Min, slider->m_Max);
-					}
-					else if (item->m_Type == MenuItem::Type::FLOAT_DRAG) {
-						FloatDrag* drag = (FloatDrag*)item;
-						ImGui::DragFloat(drag->m_Label.c_str(), drag->m_Var, drag->m_Speed, drag->m_Min, drag->m_Max);
-					}
-					else if (item->m_Type == MenuItem::Type::INT_DRAG) {
-						IntDrag* drag = (IntDrag*)item;
-						ImGui::DragInt(drag->m_Label.c_str(), drag->m_Var, drag->m_Speed, drag->m_Min, drag->m_Max);
-					}
-					else if (item->m_Type == MenuItem::Type::CHECKBOX) {
-						Checkbox* checkbox = (Checkbox*)item;
-						ImGui::Checkbox(checkbox->m_Label.c_str(), checkbox->m_Var);
+					switch (item->m_Type) {
+					case MenuItem::Type::FLOAT_SLIDER:
+						DrawSlider((FloatSlider*)item);
+						break;
+					case MenuItem::Type::INT_SLIDER:
+						DrawSlider((IntSlider*)item);
+						break;
+					case MenuItem::Type::FLOAT_DRAG:
+						DrawDrag((FloatDrag*)item);
+						break;
+					case MenuItem::Type::INT_DRAG:
+						DrawDrag((IntDrag*)item);
+						break;
+					case MenuItem::Type::CHECKBOX:
+						DrawCheckbox((Checkbox*)item);
+						break;
 					}
 				}
 			}

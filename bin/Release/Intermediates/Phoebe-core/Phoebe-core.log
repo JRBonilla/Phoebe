@@ -1,65 +1,9 @@
 ﻿  Application.cpp
-  Settings.cpp
   DebugMenu.cpp
-  imgui.cpp
-  imgui_demo.cpp
-  imgui_draw.cpp
-  imgui_impl_glfw_gl3.cpp
-  EntityManager.cpp
   EditorCamera.cpp
 c:\program files (x86)\windows kits\8.1\include\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
   c:\dev\phoebe\dependencies\glfw\include\glfw\glfw3.h(98): note: see previous definition of 'APIENTRY'
   FPSCamera.cpp
-  Color.cpp
-  ForwardRenderer.cpp
-  Light.cpp
-  LightSetup.cpp
-  Material.cpp
-  Mesh.cpp
-  Sound.cpp
-  SoundManager.cpp
   PerformanceInfo.cpp
-  MeshFactory.cpp
-  Compiling...
-  BufferLayout.cpp
-  Framebuffer.cpp
-  IndexBuffer.cpp
-  VertexArray.cpp
-  VertexBuffer.cpp
-  Camera.cpp
-  OrthographicCamera.cpp
-  Font.cpp
-  FontManager.cpp
-  Model.cpp
-  Renderable2D.cpp
-  RenderSystem.cpp
-  Scene.cpp
-  ShaderManager.cpp
-  Label.cpp
-  Group.cpp
-  Layer2D.cpp
-  Renderer2D.cpp
-  Sprite.cpp
-  Shader.cpp
-  Compiling...
-  UniformBuffer.cpp
-  Uniform.cpp
-  Texture.cpp
-  Texture2D.cpp
-  TextureAtlas.cpp
-  TextureCube.cpp
   InputManager.cpp
-  Mat3.cpp
-  Mat4.cpp
-  Quat.cpp
-  Rectangle.cpp
-  Vec2.cpp
-  Vec3.cpp
-  Vec4.cpp
-  Win32Memory.cpp
-  Allocator.cpp
-  FileManager.cpp
-  Window.cpp
-  Image.cpp
-  Timer.cpp
   Phoebe-core.vcxproj -> C:\dev\Phoebe\bin\Release\Phoebe-core.lib

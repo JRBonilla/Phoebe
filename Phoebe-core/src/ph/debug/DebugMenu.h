@@ -43,6 +43,14 @@ namespace ph { namespace debug {
 	private:
 		DebugMenu();
 		~DebugMenu();
+
+		static void DrawSlider(FloatSlider* slider);
+		static void DrawSlider(IntSlider* slider);
+
+		static void DrawDrag(FloatDrag* drag);
+		static void DrawDrag(IntDrag* drag);
+
+		static void DrawCheckbox(Checkbox* checkbox);
 	};
 
 }}

@@ -93,14 +93,14 @@ namespace ph { namespace renderer {
 				characters[i].advance_x = glyph->advance.x >> 6;
 				characters[i].advance_y = glyph->advance.y >> 6;
 
-				characters[i].width		= glyph->bitmap.width;
-				characters[i].height	= glyph->bitmap.rows;
+				characters[i].width     = glyph->bitmap.width;
+				characters[i].height    = glyph->bitmap.rows;
 
-				characters[i].left		= glyph->bitmap_left;
-				characters[i].top		= glyph->bitmap_top;
+				characters[i].left      = glyph->bitmap_left;
+				characters[i].top       = glyph->bitmap_top;
 
-				characters[i].offset_x	= xoffset / (float)width;
-				characters[i].offset_y	= yoffset / (float)height;
+				characters[i].offset_x  = xoffset / (float)width;
+				characters[i].offset_y  = yoffset / (float)height;
 
 				xoffset	   += glyph->bitmap.width + 1;
 				row_height  = std::max<int>(row_height, glyph->bitmap.rows);
